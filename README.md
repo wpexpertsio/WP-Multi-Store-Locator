@@ -6,7 +6,7 @@ Add and manage Stores on your site & display search results with Google map
 If you are running some online WordPress based site and have multiple stores over there and want some smart search functionality with respect to location and categories or like then WP Store Locator is what you are looking for. 
 This plugin provides a number of options for admin in backend to manage their stores and sales manager for respective franchise. WP Store Locator have awesome user interface and displays results with google map in front end. Its a complete package with lots of features like search store, nearby you stores functionality and much more..
 
-### Features Admin highlights:
+### Features Admin highlights
 
 * Can manage Stores.
 * Can  manage Sale managers of their added Stores.
@@ -18,7 +18,7 @@ This plugin provides a number of options for admin in backend to manage their st
 with categories,Enable Search with Tags,Show street view control,Show map type control,Zoom by scroll on map,Marker Clusterer,Cluster Size,User Marker, and more…..
 
 
-### Features Frontend highlights :
+### Features Frontend highlights
 
 * User can search Store from their current location (SSL must be active ) and with desired location.
 * User can search Stores by selected units(km/miles).
