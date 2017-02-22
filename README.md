@@ -51,3 +51,12 @@ Generate a directory based on the store locations.
 1. Create a [Google API Key](https://developers.google.com/maps/documentation/javascript/get-api-key) and set them on the [settings] page.
 1. Add your stores under 'Multi Store Locator' -> Add Store
 1. Add the map to a page with this shortcode: [store_locator_show]
+
+##Changelog
+**1.0.1**
+
+- Fixed backend issues
+
+**1.0**
+
+- Initial release

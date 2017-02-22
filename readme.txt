@@ -73,5 +73,8 @@ Generate a directory based on the store locations.
 
 == Changelog ==
 
+= 1.0.1 =
+* Fixed backend issues
+
 = 1.0 =
 * Initial release
