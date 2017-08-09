@@ -1,99 +1,9 @@
 <?php
-if (!defined('ABSPATH')) {    
-exit; // Exit if accessed directly 
-}
-
-	if(wp_verify_nonce( $_POST['main_nonce_search'], 'main_nonce_searchact' )){
-		
-	
-	global $wpdb;
-    $map_options  = get_option('store_locator_map');
-    $grid_options = get_option('store_locator_grid');
-    $center_lat   = floatval($_POST['lat']);
-    $center_lng   = floatval($_POST['lng']);
-    $radius       = (isset($_POST["store_locatore_search_radius"]))?("HAVING distance < ".floatval($_POST["store_locatore_search_radius"])):"";
-    $unit         = ( $map_options['unit'] == 'km' ) ? 6371 : 3959;
-    $stores       = array();
-
-
-
-// Check if we need to filter the results by category.
-    $tag_filter = '';
-    $cat_filter = '';
-	
-	
-	
-    if (isset($_POST['store_locator_category']) and !empty($_POST['store_locator_category'])) {
-		$filter_category_ids = intval($_POST['store_locator_category']);
-        $cat_filter = " INNER JOIN $wpdb->term_relationships AS term_rel ON posts.ID = term_rel.object_id
-                        INNER JOIN $wpdb->term_taxonomy AS term_tax ON term_rel.term_taxonomy_id = term_tax.term_taxonomy_id
-                        AND term_tax.taxonomy = 'store_locator_category'
-                        AND term_tax.term_id IN (" . $filter_category_ids . ") ";
-    } 
-    if (isset($_POST['store_locator_tag']) and !empty($_POST['store_locator_tag'])) {
-        if(is_array($_POST['store_locator_tag'])){
-             $filter_tag_ids = $_POST['store_locator_tag'];
-        }else{
-            $filter_tag_ids = array($_POST['store_locator_tag']);
-        }
-        $tag_filter = " INNER JOIN $wpdb->term_relationships AS term_rel ON posts.ID = term_rel.object_id
-                        INNER JOIN $wpdb->term_taxonomy AS term_tax ON term_rel.term_taxonomy_id = term_tax.term_taxonomy_id
-                        AND term_tax.taxonomy = 'store_locator_tag'
-                        AND term_tax.term_id IN (" . implode(',', $filter_tag_ids) . ") ";
-    } 
-    
-      if ((isset($_POST['store_locator_tag']) && $_POST['store_locator_tag']) && (isset($_POST['store_locator_category']) && $_POST['store_locator_category'])) {
-        if(is_array($_POST['store_locator_tag'])){
-             $filter_tag_ids = $_POST['store_locator_tag'];
-        }else{
-            $filter_tag_ids = array($_POST['store_locator_tag']);
-        }
-        if(is_array($_POST['store_locator_category'])){
-            $filter_category_ids = $_POST['store_locator_category'];
-        }else{
-            $filter_category_ids = array($_POST['store_locator_category']);
-        }
-          $query_byTag="
-                SELECT DISTINCT psts.ID
-                FROM $wpdb->posts AS psts, $wpdb->term_relationships AS psts_rel, $wpdb->terms AS psts_ter
-                WHERE psts.ID = psts_rel.object_id
-                AND psts_ter.term_id = psts_rel.term_taxonomy_id
-                AND psts_ter.term_id IN (".implode(',', $filter_tag_ids).")";
-//    print_r($wpdb->get_results($query_byTag));
-        $query_byCat="
-                SELECT DISTINCT psts.ID
-                FROM $wpdb->posts AS psts, $wpdb->term_relationships AS psts_rel, $wpdb->terms AS psts_ter
-                WHERE psts.ID = psts_rel.object_id
-                AND psts_ter.term_id = psts_rel.term_taxonomy_id
-                AND psts_ter.term_id IN (".implode(',', $filter_category_ids).")";
-//    print_r($wpdb->get_results($query_byCat));
-    $tag_filter = " AND posts.ID IN (".$query_byTag.") ";
-    $cat_filter = " AND posts.ID IN (".$query_byCat.") ";
-      } 
-
-    $stores = $wpdb->get_results("SELECT post_lat.meta_value AS lat,
-                           post_lng.meta_value AS lng,
-                           posts.ID, 
-                           ( $unit * acos( cos( radians( $center_lat ) ) * cos( radians( post_lat.meta_value ) ) * cos( radians( post_lng.meta_value ) - radians( $center_lng ) ) + sin( radians( $center_lat ) ) * sin( radians( post_lat.meta_value ) ) ) ) 
-                      AS distance
-                      FROM $wpdb->posts AS posts
-                      INNER JOIN $wpdb->postmeta AS post_lat ON post_lat.post_id = posts.ID AND post_lat.meta_key = 'store_locator_lat'
-                      INNER JOIN $wpdb->postmeta AS post_lng ON post_lng.post_id = posts.ID AND post_lng.meta_key = 'store_locator_lng'
-                      $cat_filter
-                      $tag_filter
-                      WHERE posts.post_type = 'store_locator' 
-                      AND posts.post_status = 'publish' GROUP BY posts.ID $radius ORDER BY distance"
-    );
-}
-//    print_r($stores);
-// echo dirname( __FILE__ );
-
-
-
+$counter = 0;
 if ($stores) {
-
+    require_once( ABSPATH . '/wp-admin/includes/upgrade.php' );
     global $user_ID;
-   
+    global $wpdb;
     $single_options = get_option('store_locator_single');
     $locations['center'] = array('lat' => $center_lat, 'lng' => $center_lng);
     foreach ($stores as $store) {
@@ -107,44 +17,84 @@ if ($stores) {
         }
         $working_hours .= "</table>";
 		if (has_post_thumbnail( $store->ID ) ){ ?>
-		<?php $images = wp_get_attachment_image_src( get_post_thumbnail_id( $store->ID ), 'single-post-thumbnail' ); 
-		
+		<?php $images = wp_get_attachment_image_src( get_post_thumbnail_id( $store->ID ), 'single-post-thumbnail' );
+
 		 $image = '<div class="img-content" ><img  style="width:150px;" src="'.$images[0].'" /></div>';
-		 
+
 		} else {
 			 $image = '';
 		}
-        $infowindow = str_replace(
-		array("{address}", "{image}","{city}", "{state}", "{country}", "{zipcode}", "{name}", "{phone}", "{website}", "{working_hours}"), 
-		array($meta['store_locator_address'][0], $image, $meta['store_locator_city'][0], $meta['store_locator_state'][0], $meta['store_locator_country'][0], $meta['store_locator_zipcode'][0], $meta['store_locator_name'][0], $meta['store_locator_phone'][0], $meta['store_locator_website'][0], $working_hours), $map_options['infowindow']
-		);
-        
-		$locations['locations'][] = array('lat' => $store->lat, 'lng' => $store->lng, 'infowindow' => $infowindow);
-        
+
+		$options = get_option('store_locator_map',true);
+        $radius_unit = $options['unit'];
+
+        $infowindow_content = $options['infowindow'];
+        $infowindow_source = $options['info_window_source'];
+
+        $APKI_KEY = get_option('store_locator_street_API_KEY');
+
+        $img = '';
+        $get_store_img = wp_get_attachment_url( get_post_thumbnail_id($store->ID) );
+        if(!empty($get_store_img))
+            $img = '<img src="'.$get_store_img.'" class="store-img"/>';
+
+		$linkable_title = '<a href="'.get_permalink( $store->ID ).'" target="_blank">' . get_the_title($store->ID) . '</a>';
+        $infowindow_content = str_replace('{image}',$img,$infowindow_content);
+        $infowindow_content = str_replace('{name}',$linkable_title,$infowindow_content);
+        $infowindow_content = str_replace('{address}',get_post_meta($store->ID,'store_locator_address',true),$infowindow_content);
+        $infowindow_content = str_replace('{city}',get_post_meta($store->ID,'store_locator_city',true),$infowindow_content);
+        $infowindow_content = str_replace('{state}',get_post_meta($store->ID,'store_locator_state',true),$infowindow_content);
+        $infowindow_content = str_replace('{country}',get_post_meta($store->ID,'store_locator_country',true),$infowindow_content);
+        $infowindow_content = str_replace('{zipcode}',get_post_meta($store->ID,'store_locator_zipcode',true),$infowindow_content);
+        $infowindow_content = str_replace('{phone}',get_post_meta($store->ID,'store_locator_phone',true),$infowindow_content);
+        $infowindow_content = str_replace('{website}','<a href="'.get_post_meta($store->ID,'store_locator_website',true).'">Visit Website</a>',$infowindow_content);
+
+        $infowindow_content .= '<div class="wpsl-distance">'.number_format($store->distance, 2) . ' '.$radius_unit.'</div>';
+
+        $pano_loader = '';
+        if($infowindow_source == 'none')
+            $pano_loader = 'pano-hide';
+
+        $infowindow = '<div class="store-infowindow">';
+        $infowindow .= apply_filters('wpmsl_infowindow_content',$infowindow_content,$store);
+        $infowindow .= '</div>';
+
+		$markers_location = array('lat' => $store->lat, 'lng' => $store->lng, 'infowindow' => $infowindow,'private'=>$private_clinic);
+		$markers_location = apply_filters('wpmsl_markers_location',$markers_location,$infowindow,$store);
+		$locations['locations'][] = $markers_location;
+
         //insert transactions to DB
-        // $sql = "INSERT INTO store_locator_transactions (`post_id`, `user_id`, `date`) VALUES ('".$store->ID."', '".$user_ID."', '".date('Y-m-d H:i:s')."')";
-        // dbDelta($sql);
+        $sql = "INSERT INTO store_locator_transactions (`post_id`, `user_id`, `date`) VALUES ('".$store->ID."', '".$user_ID."', '".date('Y-m-d H:i:s')."')";
+        dbDelta($sql);
+        $counter++;
     }
 } else {
     $locations = array('center' => array('lat' => $center_lat, 'lng' => $center_lng), 'locations' => array());
 }
 ?>
 
+<!-- Show Map -->
+<?php
+$width = '74%';
+if( empty( $grid_options['enable'] ) ) {
+	$width = '100%';
+}
 
-<!-- Show Map -->   
-<?php 
+if ($map_options['enable']): $map_options['enable'];?>
 
- $map_options  = get_option('store_locator_map');
-if ($map_options['enable']):
-	update_option('store_locator_map_data_location_data',$locations);
-?>
-    <div id="store_locatore_search_map" style="height: <?php echo $map_options['height'] . $map_options['heightunit']; ?>;width: <?php echo $map_options['width'] . $map_options['widthunit']; ?>;"></div>
-    
-<?php endif; ?>
+	<div id="store_locatore_search_map" style="height: <?php echo $map_options['height'] . $map_options['heightunit']; ?>;width: <?php echo $width?>;position:absolute" class="<?php echo $map_options['listing_position']?>"></div>
 
+    <script>
+        var locations = <?php echo json_encode($locations); ?>;
+        store_locator_map_initialize(locations);
+    </script>
+<?php
 
+	do_action('store_locations',$locations);
 
-<!-- Show Grid -->   
+ endif; ?>
+
+<!-- Show Grid -->
 <?php if ($grid_options['enable'] && isset($grid_options['columns']) && $grid_options['columns']): ?>
     <br>
     <?php if(empty($grid_options['view']) || $grid_options['view'] == 'table'): ?>
@@ -153,7 +103,7 @@ if ($map_options['enable']):
             <thead>
                 <tr>
                     <?php foreach ($grid_options['columns'] as $column): ?>
-                        <th><?php echo esc_html($column); ?></th>
+                        <th><?php echo $column; ?></th>
                     <?php endforeach; ?>
                 </tr>
                 </thead>
@@ -172,13 +122,14 @@ if ($map_options['enable']):
                         switch ($column) {
                             case 'name':
                                 if($single_options['page']){
-                                    echo "<a href='". get_post_permalink($store->ID) ."'>".esc_html($meta['store_locator_name'][0])."</a>";
+                                    echo "<a href='". get_post_permalink($store->ID) ."'>".$meta['store_locator_name'][0]."</a>";
                                 }else{
                                     echo ($meta['store_locator_name'][0])?$meta['store_locator_name'][0]:'-';
                                 }
                                 break;
                             case 'address':
                                 echo ($meta['store_locator_address'][0])?$meta['store_locator_address'][0]:'-';
+								echo 'abtest1';
                                 break;
                             case 'city':
                                 echo ($meta['store_locator_city'][0])?$meta['store_locator_city'][0]:'-';
@@ -190,7 +141,7 @@ if ($map_options['enable']):
                                 echo ($meta['store_locator_country'][0])?$meta['store_locator_country'][0]:'-';
                                 break;
                             case 'zipcode':
-                                // echo ($meta['store_locator_zipecode'][0])?$meta['store_locator_zipecode'][0]:'-';
+                                echo ($meta['store_locator_zipecode'][0])?$meta['store_locator_zipecode'][0]:'-';
                                 break;
                             case 'website':
                                 echo ($meta['store_locator_website'][0])?$meta['store_locator_website'][0]:'-';
@@ -203,6 +154,7 @@ if ($map_options['enable']):
                                 break;
                             case 'full_address':
                                 echo $meta['store_locator_address'][0] . " " . $meta['store_locator_city'][0] . " " . $meta['store_locator_state'][0] . " " . $meta['store_locator_country'][0] . " " . $meta['store_locator_zipcode'][0];
+								echo 'abtest2';
                                 break;
                             case 'working_hours':
                                 $working_hours = "<table class='store_locator_working_hours'>";
@@ -232,7 +184,7 @@ if ($map_options['enable']):
                                 $form = RGFormsModel::get_form_meta( $form_id );
                                 // form is valid
                                 if(empty($form)) {
-                                    echo '-';                                
+                                    echo '-';
                                     break;
                                 }
                                 // print form scripts
@@ -250,17 +202,17 @@ if ($map_options['enable']):
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                       </div>
                                       <div class="modal-body">
-                                        <?php 
+                                        <?php
                                             $request_uri = $_SERVER['REQUEST_URI'];
                                             $_SERVER['REQUEST_URI'] = $_SERVER['HTTP_REFERER'];
-                                            gravity_form($form_id, false, false, false, array( 'store_id' => $store->ID, 'test' => 2 ), true, 12); 
+                                            gravity_form($form_id, false, false, false, array( 'store_id' => $store->ID, 'test' => 2 ), true, 12);
                                             $_SERVER['REQUEST_URI'] = $request_uri;
                                         ?>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                                <?php 
+                                <?php
                                 }else{
                                     echo '-';
                                 }
@@ -274,7 +226,7 @@ if ($map_options['enable']):
                     $index++;
                 }
                 }else{
-                    echo "<tr><td style='text-align: center;' colspan='".count($columns)."'>". __('No Stores founds.', 'store_locator') ."</td></tr>";
+                    echo "<tr><td class='store-locator-not-found' style='text-align: center;' colspan='".count($columns)."'><span><i class='fa fa-map-marker' aria-hidden='true'></i></span><p>". apply_filters('wpmsl_no_stores_found','No Store found') ."</p></td></tr>";
                 }
                 ?>
             </tbody>
@@ -282,145 +234,178 @@ if ($map_options['enable']):
     </div>
         <?php else: ?>
         <div class="store-locator-item-container">
-            
+            <div class="wpsl-list-title"><?php _e('Store List','wpmsl')?></div>
                 <?php
                 if($stores){
                  if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
                     require_once( GFCommon::get_base_path() . '/form_display.php' );
                  }
                 $index = 1;
+				$counter = 1;
+				$listing_counter = 1;
+				// $stores = apply_filters('wpmls_store_info',$stores);
+                $map_options = get_option('store_locator_map');
+                $accordion = '';
+                if($map_options['show_accordion'])
+                    $accordion = 'accordion-show';
                 foreach ($stores as $store) {
-                echo '<div class="store-locator-item" style="' . (($grid_options['number'] > 0 && $index > $grid_options['number']) ? 'display: none;' : '') . ' ">';
-                    $meta = get_post_meta($store->ID);
-                    foreach ($grid_options['columns'] as $column) {
-                    echo '<div>';
-                        switch ($column) {
-                            case 'name':
-                                if($single_options['page']){
-                                    echo
-                                    "<a href='". get_post_permalink($store->ID) ."'><h1 class='store-locator-name'>".$meta['store_locator_name'][0]."</h1> </a><p class='data-distance-".str_replace('.','',$meta['store_locator_lat'][0])."-".str_replace('.','',$meta['store_locator_lng'][0])."' ></p><input type='hidden' class='data-direction-infowindow-".str_replace('.','',$meta['store_locator_lat'][0])."-".str_replace('.','',$meta['store_locator_lng'][0])."'  /> <a class='store-direction' data-direction='".$meta['store_locator_lat'][0].",".$meta['store_locator_lng'][0]."' style='cursor:pointer;' > <div jstcache='599' class='section-hero-header-directions-base ripple-container' style='padding:18px'> <div jstcache='600' class='section-hero-header-directions-icon' style='background-image:url(".plugins_url( 'assets/img/directions-1x-20150909.png', dirname(__FILE__) ).");background-size:20px;width:20px;height:20px'></div> </div> Get Direction  </a>";
-                                }else{
-                                    echo 
-                                    "<h1 class='store-locator-name'>". (($meta['store_locator_name'][0])?$meta['store_locator_name'][0]:'-') ."</h1> <p class='data-distance-".str_replace('.','',$meta['store_locator_lat'][0])."-".str_replace('.','',$meta['store_locator_lng'][0])."' ></p><input type='hidden' class='data-direction-infowindow-".str_replace('.','',$meta['store_locator_lat'][0])."-".str_replace('.','',$meta['store_locator_lng'][0])."'  /> <a class='store-direction' data-direction='".$meta['store_locator_lat'][0].",".$meta['store_locator_lng'][0]."' style='cursor:pointer;' > <div jstcache='599' class='section-hero-header-directions-base ripple-container' style='padding:18px'> <div jstcache='600' class='section-hero-header-directions-icon' style='background-image:url(".plugins_url( 'assets/img/directions-1x-20150909.png', dirname(__FILE__) ).");background-size:20px;width:20px;height:20px'></div> </div> Get Direction  </a>";
-                                }
-                                break;
-                            case 'address':
-                                echo "<span>" . __("Address", "store_locator") . "</span>";
-                                echo ($meta['store_locator_address'][0])?$meta['store_locator_address'][0]:'-';
-                                break;
-                            case 'city':
-                                echo "<span>" . __("City", "store_locator") . "</span>";
-                                echo ($meta['store_locator_city'][0])?$meta['store_locator_city'][0]:'-';
-                                break;
-                            case 'state':
-                                echo "<span>" . __("State", "store_locator") . "</span>";
-                                echo ($meta['store_locator_state'][0])?$meta['store_locator_state'][0]:'-';
-                                break;
-                            case 'country':
-                                echo "<span>" . __("Country", "store_locator") . "</span>";
-                                echo ($meta['store_locator_country'][0])?$meta['store_locator_country'][0]:'-';
-                                break;
-                            case 'zipcode':
-                                // echo "<span>" . __("Zipcode", "store_locator") . "</span>";
-                                // echo ($meta['store_locator_zipecode'][0])?$meta['store_locator_zipecode'][0]:'-';
-                                break;
-                            case 'website':
-                                echo "<span>" . __("Website", "store_locator") . "</span>";
-                                echo ($meta['store_locator_website'][0])?$meta['store_locator_website'][0]:'-';
-                                break;
-                            case 'phone':
-                                echo "<span>" . __("Phone", "store_locator") . "</span>";
-                                echo ($meta['store_locator_phone'][0])?$meta['store_locator_phone'][0]:'-';
-                                break;
-                            case 'fax':
-                                echo "<span>" . __("Fax", "store_locator") . "</span>";
-                                echo ($meta['store_locator_fax'][0])?$meta['store_locator_fax'][0]:'-';
-                                break;
-                            case 'full_address':
-                                echo "<span>" . __("Address", "store_locator") . "</span>";
-                                echo $meta['store_locator_address'][0] . " " . $meta['store_locator_city'][0] . " " . $meta['store_locator_state'][0] . " " . $meta['store_locator_country'][0] . " " . $meta['store_locator_zipcode'][0];
-                                break;
-                            case 'working_hours':
-                                $working_hours = "<table class='store_locator_working_hours'>";
-                                $metaDays = $meta['store_locator_days'][0];
-                                $metaDays = unserialize($metaDays);
-                                $days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-                                foreach ($days as $day) {
-                                    $working_hours .= "<tr class='".(($metaDays[$day]['status'] == "1") ?'store-locator-open':'store-locator-closed') ."'><td>" . $day . "</td><td>" . (($metaDays[$day]['status'] == "1") ? __("Open", "store_locator") : __("Closed", "store_locator")) . "</td><td><span class='store_locator_start'>" . $metaDays[$day]['start'] . "</span><span class='store_locator_end'>" . $metaDays[$day]['end'] . "</span></td></tr>";
-                                }
-                                $working_hours .= "</table>";
-                                echo $working_hours;
-                                break;
-                            case 'managers':
-                                echo "<span>" . __("Managers", "store_locator") . "</span><div class='store_locator_managers_list'>";
-                                $sales = unserialize($meta['store_locator_sales'][0]);
-                                if ($sales) {
-                                    foreach ($sales as $manager) {
-                                        echo get_post($manager)->post_title . "<br>";
-                                    }
-                                }else{
-                                    echo '-';
-                                }
-                                echo "</div>";
-                                break;
-                            case 'gravity_form':
-                                if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
-                                $form_id = $meta['store_locator_gform'][0];
-                                // get form array
-                                $form = RGFormsModel::get_form_meta( $form_id );
-                                // form is valid
-                                if(empty($form)) {
-                                    echo '-';                                
-                                    break;
-                                }
-                                // print form scripts
-                                GFFormDisplay::print_form_scripts($form, true);
-                                ?>
-                                <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false"  data-target="#store-locator-modal-<?php echo $store->ID; ?>"><?php _e('Show Form', 'store_locator'); ?></button>
 
-                                <!-- Modal -->
-                                <div id="store-locator-modal-<?php echo $store->ID; ?>" class="modal fade store_locator_gf_form" role="dialog" style="display: none !important;">
-                                  <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <?php 
-                                            $request_uri = $_SERVER['REQUEST_URI'];
-                                            $_SERVER['REQUEST_URI'] = $_SERVER['HTTP_REFERER'];
-                                            gravity_form($form_id, false, false, false, array( 'store_id' => $store->ID, 'test' => 2 ), true, 12); 
-                                            $_SERVER['REQUEST_URI'] = $request_uri;
-                                        ?>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <?php 
-                                }else{
-                                    echo '-';
+					echo '<div class="store-locator-item '.$accordion.'" data-store-id="'.$store->ID.'" data-marker="'. ($counter-1) .'" id="list-item-'. ($counter-1) .'" >';
+
+					do_action('wpmls_before_list_item',$store,$listing_counter);
+					$listing_counter++;
+
+					echo '<div class="circle-count">';
+						echo apply_filters('wpmsl_list_counter',$counter++,$store);
+					echo '</div>';
+
+					$radius_unit = get_option('store_locator_map',true);
+					$radius_unit = $radius_unit['unit'];
+                    $address = get_post_meta($store->ID,'store_locator_address',true);
+
+                    echo '<div class="store-list-details">';
+                    echo "<div class='store-direction' data-direction='".$store->lat.",".$store->lng."' style='cursor:pointer;'>";
+					_e('Get Direction','wpmsl');
+                    echo "<div jstcache='600' class='section-hero-header-directions-icon' style='background-image:url(".STORE_LOCATOR_PLUGIN_URL."assets/img/directions-1x-20150909.png);background-size: 14px;width: 14px;height: 14px;background-repeat: no-repeat;float: right;'></div>
+                        </div>";
+                    echo '<div class="store-list-address">';
+					$linkable_title = '<a href="'.get_permalink( $store->ID ).'" target="_blank">' . get_the_title($store->ID) . '</a>';
+                    echo '<input type="hidden" id="pano-address-'.$store->ID.'" class="pano-address" value="'.$address.'" />';
+                    $list_content = '<div class="wpsl-name">' . $linkable_title . '</div>';
+                    $list_content .= '<div class="wpsl-distance">'.number_format($store->distance, 2) . ' '.$radius_unit.'</div>';
+                    $list_content .= '<div class="wpsl-address">'. $address . '</div>';
+                    $list_content .= '<div class="wpsl-city">'.get_post_meta($store->ID,'store_locator_city',true). ', ' . get_post_meta($store->ID,'store_locator_state',true) . ' ' . get_post_meta($store->ID,'store_locator_zipcode',true) .'</div>';
+
+
+					echo $list_data = apply_filters('wpmsl_list_item',$list_content,$store,$radius_unit);
+
+                    do_action('wpmsl_listing_list_item',$store);
+
+
+					$weblink = get_post_meta($store->ID,'store_locator_website',true);
+					if(!empty($weblink))
+					   ?><div class="wpsl-wesite-link"><a href="<?php echo $weblink;?>" target="_blank"><?php _e('Visit Website','wpmsl')?></a></div>
+<?php
+                    $direction_icon = plugins_url( 'assets/img/directions-1x-20150909.png', dirname(__FILE__) );
+                    $direction_icon = str_replace(' ','%20',$direction_icon);
+
+                    echo '<div class="store_days_time">';
+                    $store_locator_days = get_post_meta($store->ID,'store_locator_days',true);
+                    foreach( $store_locator_days as $key => $value ) {
+                            if( !empty($value['start']) ) {
+                                echo '<p class="days"><b>'.$key.'</b></p>';
+                                foreach( $value as $k => $v ) {
+                                    if($k == 'start')
+                                        echo '<p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> ' . $v;
+                                    else if($k == 'end')
+                                    echo ' - ' . $v . '</p>';
                                 }
-                                break;
-                            default :
-                                break;
-                        }
-                    echo '</div>';
+                            }
                     }
+                    echo '</div>';
+
+					 echo '</div>';
+					echo '</div>';
                     $index++;
+
+					do_action('wpmls_after_list_item',$store);
+					
                 echo '</div>';
                 }
                 }else{
-                    echo "<tr><td style='text-align: center;' colspan='".count($columns)."'>". __('No Stores founds.', 'store_locator') ."</td></tr>";
+                    echo "<tr><td style='text-align: center;' colspan='".count($columns)."'><div class='store-locator-not-found'><i class='fa fa-map-marker' aria-hidden='true'></i><p>". apply_filters('wpmsl_no_stores_found','No Store found') ."</p></div>" ."</td></tr>";
                 }
+				
                 ?>
         </div>
         <?php endif; ?>
         <?php $elements = $grid_options['columns']; ?>
-         
+        <?php if (!$grid_options['scroll'] && !empty($elements[0])): ?>
+            <div id="store_locator_load_more" style="<?php echo (count($stores) > $grid_options['number']) ? 'display: block;' : 'display: none;'; ?>"> Load more ...</div>
+            <script>
+                jQuery('#map_loader').hide();
+                jQuery('#store_locator_load_more').click(function () {
+                    if(jQuery('.store_locator_grid_results tr.store_locator_tr:hidden').length <= <?php echo $grid_options['number']; ?>){
+                        jQuery('#store_locator_load_more').hide();
+                    }
+                    jQuery('.store_locator_grid_results tr.store_locator_tr:hidden:lt(<?php echo $grid_options['number']; ?>)').show("slow");
+                    if(jQuery('.store-locator-item:hidden').length <= <?php echo $grid_options['number']; ?>){
+                        jQuery('#store_locator_load_more').hide();
+                    }
+                    jQuery('.store-locator-item:hidden:lt(<?php echo $grid_options['number']; ?>)').show("slow");
+                });
+            </script>
+        <?php endif; ?>    
     </div>
-      
+    <?php if ($grid_options['scroll']): ?>
+        <script>
+            jQuery('#map_loader').hide();
+            <?php if (count($stores) > $grid_options['number']):?>        
+                jQuery('.store_locator_table-container').scroll(function() {
+                    if(jQuery('.store_locator_table-container').scrollTop() == jQuery('.store_locator_grid_results').height() - jQuery('.store_locator_table-container').height()) {
+                        jQuery('.store_locator_grid_results tr.store_locator_tr:hidden:lt(<?php echo $grid_options['number']; ?>)').show("slow");
+                    }
+                });
+                jQuery('.store_locator_table-container').height(jQuery('.store_locator_table-container').height()-5);
+            <?php endif; ?>    
+        </script>
+    <?php endif; ?>    
 <?php endif; ?>
 
-     
+
+
+<!--[if !IE]><!-->
+<style>
+/*
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+        /* Force table to not be like tables anymore */
+        table.store_locator_grid_results, .store_locator_grid_results thead, .store_locator_grid_results tbody, .store_locator_grid_results th, .store_locator_grid_results td, .store_locator_grid_results tr {
+                display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        .store_locator_grid_results thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+        }
+
+        .store_locator_grid_results tr { border: 1px solid #ccc; }
+
+        .store_locator_grid_results td {
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+        }
+
+        .store_locator_grid_results td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+        }
+
+        /*
+        Label the data
+        */
+        <?php $index = 1; ?>
+        <?php foreach ($grid_options['columns'] as $column): ?>
+            .store_locator_grid_results td:nth-of-type(<?php echo $index; ?>):before { content: "<?php echo ucfirst($column); ?>"; }
+            <?php $index++; ?>
+        <?php endforeach; ?>
+}
+</style>
+<!--<![endif]-->

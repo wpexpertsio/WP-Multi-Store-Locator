@@ -56,9 +56,9 @@ jQuery(document).ready(function (jQuery) {
             'timeFormat': 'g:i a'
         });
 		
-		if(wpmsl_ajax_object_backend.screen ==  'store_locator'){
+		/*if(wpmsl_ajax_object_backend.screen ==  'store_locator'){
 			store_locator_initializeMapBackend();
-		}
+		}*/
 		
          
 
