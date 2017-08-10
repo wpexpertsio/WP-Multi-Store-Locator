@@ -73,6 +73,35 @@ Generate a directory based on the store locations.
 
 == Changelog ==
 
+= 1.5 =
+* Fixed Grid Setting
+* Fixed Map Height Issue
+* Fixed Map Error on Firefox
+* Fixed Conliction with WooCommerce
+
+= 1.4 =
+* Added Single Page Functionality For Your Stores
+* Settings For Changing Slug For Your Single Page
+
+= 1.3 =
+* Add Support For RTL
+
+= 1.2 =
+* Add Support For WPML
+* Add Support For Avada (Fusion Builder)
+* Add Support For Divi Builder
+* Add Support For Visual Composer
+
+= 1.1 =
+* New Style for displaying Store Listing
+* Option to Change Listing Positions (Left/ Right)
+* Add Counter icon on each Listing
+* Custom Map Styling
+* Option to Enable/ Disable Search Filter
+* Search Placeholder Option
+* Add Your Own Marker
+* Search Toggle Disable / Enable Option
+
 = 1.0.1 =
 * Fixed backend issues
 
