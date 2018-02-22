@@ -54,6 +54,15 @@ Generate a directory based on the store locations.
 
 ## Changelog
 
+**1.7**
+
+- Added new style for displaying Store Listings.
+- Fixed settings.
+
+**1.6**
+
+- Added Translation Support by .PO .Mo files.
+
 **1.5**
 - Fixed Grid Setting
 - Fixed Map Height Issue
