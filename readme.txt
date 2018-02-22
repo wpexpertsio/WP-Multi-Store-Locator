@@ -4,8 +4,8 @@ Contributors: wpexpertsio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=pay@objects.ws&item_name=DonationForPlugin
 Tags: Store Locator, Search Store , Store Categories, Store Shortcode, Store Sales Manager
 Requires at least: 4.5.0
-Tested up to: 4.6.0
-Stable tag: 1.0
+Tested up to: 4.9.2
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,9 @@ Add and manage Stores on your site & display search results with Google map
 If you are running some online WordPress based site and have multiple stores over there and want some smart search functionality with respect to location and categories or like then WP Store Locator is what you are looking for. 
 This plugin provides a number of options for admin in backend to manage their stores and sales manager for respective franchise. WP Store Locator have awesome user interface and displays results with google map in front end. Its a complete package with lots of features like search store, nearby you stores functionality and much more..
 
+= Documentation =
+[click here](https://wpexperts.io/products/wp-multi-store-locator-pro/documentation) to visit detailed documentation of WP MultiStore Locator
+
 = Features Admin highlights: =
 
 * Can manage Stores.
@@ -24,9 +27,12 @@ This plugin provides a number of options for admin in backend to manage their st
 * Can  manage Store Tags.
 * Can add shortcode [store_locator_show] to show Store Locator.
 * Measure the distances in either km or miles.
+* Option to change placeholder for search fields
+* Add your custom marker icon
+* Search Toggle Disable / Enable option
 * user can  manage Map Settings like Show map on frontend,Map Width,Map Height,Map Type,Search Unit,Search radius options,Enable Search 
 with categories,Enable Search with Tags,Show street view control,Show map type control,Zoom by scroll on map,Marker Clusterer,Cluster Size,User Marker, and more…..
-
+* Generate a directory based on the store locations.
 
 = Features Frontend highlights : =
 
@@ -34,12 +40,8 @@ with categories,Enable Search with Tags,Show street view control,Show map type c
 * User can search Stores by selected units(km/miles).
 * User can search by Selected Store Categories.
 * User can use shortcode to display search map anywhere in page or post.
-
-
-= Video Demo =
-* Searching store help of Wp MultiStore Locator
-[youtube https://www.youtube.com/watch?v=M2BT6uhDR3Y]
-
+* You can easily chagnge your Listing Positions Left or Right
+* Edit support for Google Custom Map style
 
 = Premium Features =
 **Statistics**
@@ -50,9 +52,10 @@ with categories,Enable Search with Tags,Show street view control,Show map type c
 
 *Import/Export - User can import/export Stores,Sales manager.
 
-[Download Pro Version](https://codecanyon.net/item/wp-multi-store-locator-pro/19385351)
+**[Download Pro Version](https://goo.gl/iUQP3q)**
 
-Generate a directory based on the store locations.
+**Interested in contributing to WP Multic Store Locator**	
+Head over to the [WP Multic Store Locator **GitHub Repository**](https://github.com/wpexpertsio/WP-Multi-Store-Locator) to find out how you can pitch in ;)
 
 == Installation ==
 
@@ -72,6 +75,13 @@ Generate a directory based on the store locations.
 6. Now User Can Manage Stores.
 
 == Changelog ==
+
+= 1.7 =
+* Added new style for displaying Store Listings
+* Fixed settings
+
+= 1.6 =
+* Added Translation Support by .PO .Mo files
 
 = 1.5 =
 * Fixed Grid Setting

@@ -2,7 +2,7 @@
 /*
   Plugin Name: WP Multi Store Locator
   Description: This plugin provides a number of options for admin in backend to manage their stores and sales manager for respective franchise. WP Store Locator have awesome user interface and displays results with google map in front end. Its a complete package with lots of features like search store, nearby you stores functionality and much more.
-  Version: 1.5
+  Version: 1.7
   Author: WpExpertsio
   Author URI: https://wpexperts.io/
   Text Domain: WPMSL
@@ -78,14 +78,14 @@ function store_locator_plugin_activation() {
             'category' => 1, 'tag' => 1, 'streetViewControl' => 1, 'mapTypeControl' => 1, 'scroll' => 1,
             'marker1' => 'red.png', 'marker2' => 'blue.png',
             'infowindow' => '<div><div>{image}</div><h3>{name}</h3><p>{address} {city}, {state} {country} {zipcode}</p><span>{phone}</span><span>{website}</span><div>',
-            'style' => '', 'csize' => 50, 'cluster' => 0,'listing_position' => 'right','total_sponsored'=>3,
-            'default_search' => 1,'search_field_get_my_location' => 1,'search_field_location' => 1,'search_field_radius'=>1,
-            'search_field_category'=>1,'search_field_tags'=>1,'map_window_open'=>'','map_style'=>1,'listing_position'=>'left',
-            'custom_style'=>'','show_accordion'=>'','marker1_custom'=>'','marker2_custom'=>'') );
+            'style' => '', 'csize' => 50, 'cluster' => 0,'total_sponsored'=>3,
+            'default_search' => 1,'search_field_get_my_location' => '','search_field_location' => '','search_field_radius'=>'',
+            'search_field_category'=>'','search_field_tags'=>'','map_window_open'=>'','map_style'=>1,'listing_position'=>'left',
+            'custom_style'=>'','show_accordion'=>'','marker1_custom'=>'','marker2_custom'=>'', 'search_layouts'=>'onmap') );
     }
     $options_to_grid = get_option('store_locator_grid');
     if(empty($options_to_grid)) {
-        update_option('store_locator_grid', array('enable' => 1, 'number' => 10, 'scroll' => 1, 'columns' => array("name", "address"), 'view' => 'card'));
+        update_option('store_locator_grid', array('enable' => 1, 'number' => 10, 'scroll' => 1, 'columns' => array("name", "address"), 'view' => 'card','listing_position'=>'left','search_window_position'=>'wpml_search_right'));
     }
 }
 
@@ -105,25 +105,25 @@ function store_init() {
 		$store_locator_slug = 'store-locator';
 	
     $labels = array(
-        'name' => __('Stores Locator', 'store_locator'),
-        'singular_name' => __('Stores Locator', 'store_locator'),
-        'menu_name' => __('Stores Locator', 'store_locator'),
-        'name_admin_bar' => __('Store', 'store_locator'),
-        'add_new' => __('Add New Store', 'store_locator'),
-        'add_new_item' => __('Add New Store', 'store_locator'),
-        'new_item' => __('New Store', 'store_locator'),
-        'edit_item' => __('Edit Store', 'store_locator'),
-        'view_item' => __('View Store', 'store_locator'),
-        'all_items' => __('Stores List', 'store_locator'),
-        'search_items' => __('Search Store', 'store_locator'),
-        'parent_item_colon' => __('Store Partner:', 'store_locator'),
-        'not_found' => __('No Store found.', 'store_locator'),
-        'not_found_in_trash' => __('No Store found in Trash.', 'store_locator')
+        'name' => __('Stores Locator', 'wpmsl'),
+        'singular_name' => __('Stores Locator', 'wpmsl'),
+        'menu_name' => __('Stores Locator', 'wpmsl'),
+        'name_admin_bar' => __('Store', 'wpmsl'),
+        'add_new' => __('Add New Store', 'wpmsl'),
+        'add_new_item' => __('Add New Store', 'wpmsl'),
+        'new_item' => __('New Store', 'wpmsl'),
+        'edit_item' => __('Edit Store', 'wpmsl'),
+        'view_item' => __('View Store', 'wpmsl'),
+        'all_items' => __('Stores List', 'wpmsl'),
+        'search_items' => __('Search Store', 'wpmsl'),
+        'parent_item_colon' => __('Store Partner:', 'wpmsl'),
+        'not_found' => __('No Store found.', 'wpmsl'),
+        'not_found_in_trash' => __('No Store found in Trash.', 'wpmsl')
     );
     $single_options = get_option('store_locator_single');
     $args = array(
         'labels' => $labels,
-        'description' => __('Description.', 'store_locator'),
+        'description' => __('Description.', 'wpmsl'),
         'public' => (($single_options['page'])?true:false),
         'show_ui' => true,
         'show_in_menu' => true,
@@ -137,25 +137,25 @@ function store_init() {
         'supports' => array('thumbnail')
     );
     $labelsSM = array(
-        'name' => __('Sales Managers', 'store_locator'),
-        'singular_name' => __('Sales Managers', 'store_locator'),
-        'menu_name' => __('Sales Managers', 'store_locator'),
-        'name_admin_bar' => __('Book', 'store_locator'),
-        'add_new' => __('Add New', 'store_locator'),
-        'add_new_item' => __('Add New Sales Manager', 'store_locator'),
-        'new_item' => __('New Sales Manager', 'store_locator'),
-        'edit_item' => __('Edit Sales Manager', 'store_locator'),
-        'view_item' => __('View Sales Manager', 'store_locator'),
-        'all_items' => __('Sales Managers List', 'store_locator'),
-        'search_items' => __('Search Manager', 'store_locator'),
-        'parent_item_colon' => __('Parent Manager:', 'store_locator'),
-        'not_found' => __('No Sales Manager found.', 'store_locator'),
-        'not_found_in_trash' => __('No Sales Manager found in Trash.', 'store_locator')
+        'name' => __('Sales Managers', 'wpmsl'),
+        'singular_name' => __('Sales Managers', 'wpmsl'),
+        'menu_name' => __('Sales Managers', 'wpmsl'),
+        'name_admin_bar' => __('Book', 'wpmsl'),
+        'add_new' => __('Add New', 'wpmsl'),
+        'add_new_item' => __('Add New Sales Manager', 'wpmsl'),
+        'new_item' => __('New Sales Manager', 'wpmsl'),
+        'edit_item' => __('Edit Sales Manager', 'wpmsl'),
+        'view_item' => __('View Sales Manager', 'wpmsl'),
+        'all_items' => __('Sales Managers List', 'wpmsl'),
+        'search_items' => __('Search Manager', 'wpmsl'),
+        'parent_item_colon' => __('Parent Manager:', 'wpmsl'),
+        'not_found' => __('No Sales Manager found.', 'wpmsl'),
+        'not_found_in_trash' => __('No Sales Manager found in Trash.', 'wpmsl')
     );
 
     $argsSM = array(
         'labels' => $labelsSM,
-        'description' => __('Description.', 'store_locator'),
+        'description' => __('Description.', 'wpmsl'),
         'public' => false,
         'publicly_queryable' => false,
         'show_ui' => true,
@@ -176,8 +176,8 @@ function store_init() {
     // create custom category for stores
     register_taxonomy( 'store_locator_category', array('store_locator'), array(
             'hierarchical' => true,
-            'label' => __('Store Categories', 'store_locator'),
-            'singular_label' => __('Category', 'store_locator'),
+            'label' => __('Store Categories', 'wpmsl'),
+            'singular_label' => __('Category', 'wpmsl'),
             'rewrite' => array( 'slug' => 'categories', 'with_front'=> false )
         )
     );
@@ -189,8 +189,8 @@ function store_init() {
         'store_locator',
         array(
             'hierarchical'  => false,
-            'label'         => __("Store Tags", 'store_locator'),
-            'singular_name' => __("Tag", 'store_locator'),
+            'label'         => __("Store Tags", 'wpmsl'),
+            'singular_name' => __("Tag", 'wpmsl'),
             'rewrite'       => true,
             'query_var'     => true
         )
@@ -210,6 +210,7 @@ add_action('admin_menu', 'register_stores_submenu_page');
 function register_stores_submenu_page() {
     add_submenu_page('edit.php?post_type=store_locator', 'Sales Manager', 'Sales Managers List', 'manage_options', 'edit.php?post_type=sales_manager');
     add_submenu_page('edit.php?post_type=store_locator', 'Settings', 'Settings', 'manage_options', 'store_locator_settings_page', 'store_locator_settings_page_callback');
+    add_submenu_page('edit.php?post_type=store_locator', 'Get Pro', '<span class="wpml_get_pro">Get Pro</span>', 'manage_options', 'store_locator_go_pro_page', 'store_locator_go_pro_page_callback');
 }
 
 
@@ -233,8 +234,10 @@ function store_locator_backend_script() {
 	$post_type = get_post_type( get_the_ID() );
   
 	wp_enqueue_style('store_lcoator_backend-style', STORE_LOCATOR_PLUGIN_URL . '/assets/css/style.css');	
-	if( $post_type  == 'store_locator' || $_GET['page'] == 'store_locator_settings_page' ) {	 
+	if( $post_type  == 'store_locator' || (isset($_GET['page']) && $_GET['page']== 'store_locator_settings_page') ) {	 
 		wp_enqueue_media();
+      
+        
 		wp_enqueue_script('store_locator_backend_map', "https://maps.googleapis.com/maps/api/js?key=".$store_locator_API_KEY."&libraries=places");
 		wp_enqueue_script('store_locator_backend_script',  STORE_LOCATOR_PLUGIN_URL . '/assets/js/backend_script.js', array('jquery'));
 		wp_enqueue_script('store_backend_select2', STORE_LOCATOR_PLUGIN_URL . '/assets/js/select2.js');
@@ -256,7 +259,7 @@ function store_frontend_script() {
 	$setting_options = get_option('store_locator_map');
 	
     wp_enqueue_script('store_frontend_map', "https://maps.googleapis.com/maps/api/js?key=".get_option('store_locator_API_KEY')."&libraries=places");
-    
+   
 	if( isset( $setting_options['rtl_enabled'] ) ) {
 		if( $setting_options['rtl_enabled'] == '1' ) {
 			wp_enqueue_style('store_frontend-style', STORE_LOCATOR_PLUGIN_URL . '/assets/css/rtl-style.css');
@@ -294,25 +297,25 @@ function store_locator_meta_box_callback_store_info($post) {
     <table class="widefat" style="border: 0px;">
         <tbody>
         <tr>
-            <td><?php echo __("Store Locator Shortcode", 'store_locator_Shortcode'); ?></td>
+            <td><?php echo __("Store Locator Shortcode", 'wpmsl'); ?></td>
             <td>
                 <input type="text" readonly value="&nbsp;&nbsp;&nbsp;[store_locator_show]" name="store_locator_show"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Code", 'store_locator'); ?></td>
+            <td><?php echo __("Code", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'store_locator_code', true) ? get_post_meta($post_id, 'store_locator_code', true) : ''; ?>" name="store_locator_code"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Name", 'store_locator'); ?></td>
+            <td><?php echo __("Name", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'store_locator_name', true) ? get_post_meta($post_id, 'store_locator_name', true) : ''; ?>" name="store_locator_name"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Description", 'store_locator'); ?></td>
+            <td><?php echo __("Description", 'wpmsl'); ?></td>
             <td>
                 <?php
                 $content = get_post_meta( $post_id, 'store_locator_description', true );
@@ -321,25 +324,25 @@ function store_locator_meta_box_callback_store_info($post) {
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Phone", 'store_locator'); ?></td>
+            <td><?php echo __("Phone", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'store_locator_phone', true) ? get_post_meta($post_id, 'store_locator_phone', true) : ''; ?>" name="store_locator_phone"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Fax", 'store_locator'); ?></td>
+            <td><?php echo __("Fax", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'store_locator_fax', true) ? get_post_meta($post_id, 'store_locator_fax', true) : ''; ?>" name="store_locator_fax"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Website", 'store_locator'); ?></td>
+            <td><?php echo __("Website", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'store_locator_website', true) ? get_post_meta($post_id, 'store_locator_website', true) : ''; ?>" name="store_locator_website"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Working Hours", 'store_locator'); ?></td>
+            <td><?php echo __("Working Hours", 'wpmsl'); ?></td>
             <?php
             $days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
             $days_meta = get_post_meta($post_id, 'store_locator_days', true);
@@ -363,7 +366,7 @@ function store_locator_meta_box_callback_store_info($post) {
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Sales Managers", 'store_locator'); ?></td>
+            <td><?php echo __("Sales Managers", 'wpmsl'); ?></td>
             <td>
                 <select style="width: 186px;" name="store_locator_sales[]" id="store_locator_sales" multiple="multiple">
                     <?php
@@ -404,13 +407,13 @@ function store_locator_meta_box_callback_address_info($post) {
     <table class="widefat" style="border: 0px;">
         <tbody>
         <tr>
-            <td><?php echo __("Address", 'store_locator'); ?></td>
+            <td><?php echo __("Address", 'wpmsl'); ?></td>
             <td>
                 <input id="store_locator_address" type="text" value="<?php echo get_post_meta($post_id, 'store_locator_address', true); ?>" name="store_locator_address"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Country", 'store_locator'); ?></td>
+            <td><?php echo __("Country", 'wpmsl'); ?></td>
             <td>
                 <select style="width: 186px;" name="store_locator_country" id="store_locator_country">
                     <option value="" ></option>
@@ -428,7 +431,7 @@ function store_locator_meta_box_callback_address_info($post) {
             </td>
         </tr>
         <tr <?php echo ($selectedCountry != "United States")?"style='display: none;'":""; ?> >
-            <td><?php echo __("State", 'store_locator'); ?></td>
+            <td><?php echo __("State", 'wpmsl'); ?></td>
             <td>
                 <select style="width: 186px;" name="store_locator_state" id="store_locator_state">
                     <option value="" ></option>
@@ -446,13 +449,13 @@ function store_locator_meta_box_callback_address_info($post) {
             </td>
         </tr>
         <tr>
-            <td><?php echo __("City", 'store_locator'); ?></td>
+            <td><?php echo __("City", 'wpmsl'); ?></td>
             <td>
                 <input id="store_locator_city" type="text" value="<?php echo get_post_meta($post_id, 'store_locator_city', true) ? get_post_meta($post_id, 'store_locator_city', true) : ''; ?>" name="store_locator_city"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Postal Code", 'store_locator'); ?></td>
+            <td><?php echo __("Postal Code", 'wpmsl'); ?></td>
             <td>
                 <input id="store_locator_zipcode" type="text" value="<?php echo get_post_meta($post_id, 'store_locator_zipcode', true) ? get_post_meta($post_id, 'store_locator_zipcode', true) : ''; ?>" name="store_locator_zipcode"/>
             </td>
@@ -514,31 +517,31 @@ function sales_managers_meta_box_callback($post) {
     <table class="widefat" style="border: 0px;">
         <tbody>
         <tr>
-            <td><?php echo __("Identification", 'store_locator'); ?></td>
+            <td><?php echo __("Identification", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'sales_manager_id', true) ? get_post_meta($post_id, 'sales_manager_id', true) : ''; ?>" name="sales_manager_id"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Title", 'store_locator'); ?></td>
+            <td><?php echo __("Title", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'sales_manager_title', true) ? get_post_meta($post_id, 'sales_manager_title', true) : ''; ?>" name="sales_manager_title"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Name", 'store_locator'); ?></td>
+            <td><?php echo __("Name", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'sales_manager_name', true) ? get_post_meta($post_id, 'sales_manager_name', true) : ''; ?>" name="sales_manager_name"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("Phone", 'store_locator'); ?></td>
+            <td><?php echo __("Phone", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'sales_manager_phone', true) ? get_post_meta($post_id, 'sales_manager_phone', true) : ''; ?>" name="sales_manager_phone"/>
             </td>
         </tr>
         <tr>
-            <td><?php echo __("E-Mail", 'store_locator'); ?></td>
+            <td><?php echo __("E-Mail", 'wpmsl'); ?></td>
             <td>
                 <input type="text" value="<?php echo get_post_meta($post_id, 'sales_manager_email', true) ? get_post_meta($post_id, 'sales_manager_email', true) : ''; ?>" name="sales_manager_email"/>
             </td>
@@ -694,9 +697,9 @@ function store_list_columns($columns) {
         $columns['date']
     );
     $new_columns = array(
-        'title' => __('Name', 'store_locator'),
-        'store_address' => __('Address', 'store_locator'),
-        'store_sales' => __('Sales Managers', 'store_locator'),
+        'title' => __('Name', 'wpmsl'),
+        'store_address' => __('Address', 'wpmsl'),
+        'store_sales' => __('Sales Managers', 'wpmsl'),
     );
     return array_merge($columns, $new_columns);
 }
@@ -732,10 +735,10 @@ function sales_manager_list_columns($columns) {
         $columns['date']
     );
     $new_columns = array(
-        'title' => __('Name', 'store_locator'),
-        'sales_title' => __('Title', 'store_locator'),
-        'sales_phone' => __('Phone', 'store_locator'),
-        'sales_email' => __('Email', 'store_locator'),
+        'title' => __('Name', 'wpmsl'),
+        'sales_title' => __('Title', 'wpmsl'),
+        'sales_phone' => __('Phone', 'wpmsl'),
+        'sales_email' => __('Email', 'wpmsl'),
     );
     return array_merge($columns, $new_columns);
 }
@@ -783,9 +786,9 @@ add_action('restrict_manage_posts', 'custom_posts_restrict_manage_posts');
 function custom_posts_restrict_manage_posts() {
     $currentManager = isset($_GET['store_locator_manager']) ? $_GET['store_locator_manager'] : '';
     ?>
-    <?php if (isset($_GET['post_type']) && $_GET['post_type'] == 'store_locator'): ?>
+    <?php if (isset($_GET['post_type']) && $_GET['post_type'] == 'wpmsl'): ?>
         <select style="width: 186px;" name="store_locator_manager" >
-            <option value=""> <?php echo __("All Sales Managers", 'store_locator'); ?></option>
+            <option value=""> <?php echo __("All Sales Managers", 'wpmsl'); ?></option>
             <?php
             global $wpdb;
             $q = $wpdb->get_results("SELECT * FROM $wpdb->posts WHERE post_type='sales_manager' AND post_status = 'publish' order by 'ID' Desc");
@@ -807,13 +810,16 @@ function store_locator_show_func($atts) {
 
     ob_start();
     $map_options = get_option('store_locator_map');
+
+
+
     $grid_options = get_option('store_locator_grid');
     $radius = ($map_options['radius'])?explode(",",trim($map_options['radius'])):false;
-    $tag = $map_options['tag'];
-    $category = $map_options['category'];
+    $tag = isset($map_options['tag']) ? $map_options['tag'] : '';
+    $category = isset($map_options['category']) ? $map_options['category'] : '';
 
-    $map_options['marker1'] = STORE_LOCATOR_PLUGIN_URL . "assets/img/" . $map_options['marker1'];
-    $map_options['marker2'] = STORE_LOCATOR_PLUGIN_URL . "assets/img/" . $map_options['marker2'];
+    $map_options['marker1'] = STORE_LOCATOR_PLUGIN_URL . "assets/img/" . ((isset($map_options['marker1']) && !empty($map_options['marker1'])) ? $map_options['marker1'] : "blue.png");
+    $map_options['marker2'] = STORE_LOCATOR_PLUGIN_URL . "assets/img/" . ((isset($map_options['marker2']) && !empty($map_options['marker2'])) ? $map_options['marker2'] : "red.png");
 //    $map_options['marker3'] = STORE_LOCATOR_PLUGIN_URL . "assets/img/" . $map_options['marker3'];
 
     if(!empty($map_options['marker1_custom'])) {
@@ -825,16 +831,19 @@ function store_locator_show_func($atts) {
     }
 
     $default_radius = 50;
-    preg_match("/^(.*\[)(.*)(\])/", $map_options['radius'], $find);
-    $default_radius = trim($find[2]);
+    if(isset($map_options['radius'])){
+        preg_match("/^(.*\[)(.*)(\])/", $map_options['radius'], $find);
+        $default_radius = trim($find[2]);
+    }
 
     // Attributes
+    $map_landing_address=get_option('map_landing_address');
     $atts = shortcode_atts(
         array(
-            'location' => 'United States',
+            'location' => isset($map_landing_address['address']) ? $map_landing_address['address'] : 'United States',
             'radius' => $default_radius,
-            'city' => '',
-            'state' => '',
+            'city' => isset($map_landing_address['city']) ? $map_landing_address['city'] : '',
+            'state' => isset($map_landing_address['country']) ? $map_landing_address['country'] : '',
         ),
         $atts
     );
@@ -854,8 +863,7 @@ function store_locator_show_func($atts) {
     $state = (!empty($atts['state'])) ? ', ' . $atts['state']  : '';
 
     $address = $atts['location'] .' '. $atts['city'] . $state;
-//	setcookie('default_location', $address, time() + (86400 * 30), "/");
-//    setcookie('default_radius', $atts['radius'], time() + (86400 * 30), "/");
+
     ?>
     <script>
         var store_locator_map_options  =  <?php echo json_encode($map_options); ?>;
@@ -889,9 +897,11 @@ function store_locator_show_func($atts) {
         echo do_action('wpmsl_before_map');?>
 
         <div class="loader"><div>
-
+            <?php
+                $placeholder_settings = get_option('placeholder_settings');
+                ?>
                 <?php if(!empty($map_options['default_search'])) {?>
-                    <div class="col-left leftsidebar slide-left <?php echo $map_options['listing_position'].'-skip'?>">
+                    <div class="col-left leftsidebar slide-left <?php echo isset($grid_options['listing_position']) ? $grid_options['listing_position'].'-skip ' : 'below_map-skip ';  echo isset($grid_options['search_window_position']) ? $grid_options['search_window_position'] : 'wpml_above_map'; ?>">
 
                         <?php
 						$map_window_open = '';
@@ -900,73 +910,84 @@ function store_locator_show_func($atts) {
 							if(!empty($map_window_open))
 								$map_window_open = 'show';
 						}
+                     
                         ?>
-                        <div class="search-options-btn"><?php _e('Search Options','wpmsl')?></div>
+                        <div class="search-options-btn"><?php echo (isset($placeholder_settings['search_options_btn']) && !empty($placeholder_settings['search_options_btn'])) ? $placeholder_settings['search_options_btn'] : _e('Search Options','wpmsl'); ?></div>
 
-                        <?php
-                        $placeholder_settings = get_option('placeholder_settings');
-                        ?>
-                        <div class="store-search-fields <?php echo $map_window_open?>">
-                            <form id="store_locator_search_form" >
-                                <input id="store_locatore_get_btn" class="<?php echo $map_options['search_field_get_my_location']?>"  type="button" value="<?php  echo __($btn, 'store_locator'); ?>"  <?php echo $display; ?>  />
-                                <!-- <span class="closesidebar " style="width:18px; height:18px;display: inline-block;
-                    
-                        cursor: pointer;"></span> -->
-                                <input id="store_locatore_search_input"  class="wpsl_search_input <?php echo $map_options['search_field_location']?>" name="store_locatore_search_input" type="text" placeholder="<?php echo ($placeholder_settings['enter_location_txt'] == ''? _e('Location / Zip Code','wpmsl') :$placeholder_settings['enter_location_txt']); ?>">
-                                <input id="store_locatore_search_lat" name="store_locatore_search_lat" type="hidden" >
-                                <input id="store_locatore_search_lng" name="store_locatore_search_lng" type="hidden" >
-                                <div>
-                                    <?php if($radius): ?>
-                                        <select id="store_locatore_search_radius" name="store_locatore_search_radius" class="wpsl_search_radius <?php echo $map_options['search_field_radius']?>">
-                                            <?php foreach ($radius as $option): ?>
-                                                <?php
-                                                $default = (preg_match("/\[[^\]]*\]/", $option))?true:false;
-                                                $option = str_replace(array('[',']'), array('',''), $option);
-                                                ?>
-                                                <option value="<?php echo $option; ?>" <?php echo ($default)?"selected":"" ?> ><?php echo $option." ".$map_options['unit'] ; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    <?php endif; ?>
+                        
+            <div class="store-search-fields <?php echo $map_window_open?>">
+                <form id="store_locator_search_form" >
+                    <?php if(!empty($display)): ?>
+                    <div class="store_locator_field">
+                <input id="store_locatore_get_btn" class="<?php echo $map_options['search_field_get_my_location']?>"  type="button" value="<?php  echo __($btn, 'store_locator'); ?>"  <?php echo $display; ?>  />
+                    </div>
+                <?php endif; ?>
+                    <div class="store_locator_field <?php echo $map_options['search_field_location']?>">
+                <input id="store_locatore_search_input"  class="wpsl_search_input " name="store_locatore_search_input" type="text" placeholder="<?php echo ($placeholder_settings['enter_location_txt'] == ''? _e('Location / Zip Code','wpmsl') :$placeholder_settings['enter_location_txt']); ?>">
+                    </div>
+                    <?php $map_landing_address=get_option('map_landing_address') ?>
+                <input id="store_locatore_search_lat" name="store_locatore_search_lat" type="hidden" value="<?php echo isset($map_landing_address['lng']) ? $map_landing_address['lat'] : ''; ?>">
+                <input id="store_locatore_search_lng" name="store_locatore_search_lng" type="hidden" value="<?php echo isset($map_landing_address['lng']) ? $map_landing_address['lng'] : ''; ?>">
+                
+                <?php if($radius): ?>
+                    <div class="store_locator_field <?php echo $map_options['search_field_radius']; ?>">
+                    <select id="store_locatore_search_radius" name="store_locatore_search_radius" class="wpsl_search_radius ">
+                        <?php foreach ($radius as $option): ?>
+                            <?php
+                            $default = (preg_match("/\[[^\]]*\]/", $option))?true:false;
+                            $option = str_replace(array('[',']'), array('',''), $option);
+                            ?>
+                            <option value="<?php echo $option; ?>" <?php echo ($default)?"selected":"" ?> ><?php echo $option." ".$map_options['unit'] ; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <?php endif; ?>
 
-                                    <?php
-                                    $terms = get_terms( 'store_locator_category', array('hide_empty' => 0));
-                                    if ( $category ): ?>
-                                        <select name="store_locator_category" id="wpsl_store_locator_category" class="wpsl_locator_category <?php echo $map_options['search_field_category']?>">
-                                            <option value=""> <?php echo ($placeholder_settings['select_category_txt'] == ''? _e("Select Category","wpmsl") :$placeholder_settings['select_category_txt']); ?> </option>
-                                            <?php foreach ( $terms as $term ) : ?>
-                                                <option value="<?php echo $term->term_id; ?>"> <?php echo $term->name; ?> </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    <?php endif; ?>
+                <?php
+                $terms = get_terms( 'store_locator_category', array('hide_empty' => 0));
+                ?>
+                <div class="store_locator_field <?php echo $map_options['category']?>">
+                    <select name="store_locator_category" id="wpsl_store_locator_category" class="wpsl_locator_category ">
+                        <option value=""> <?php echo ($placeholder_settings['select_category_txt'] == ''? _e("Select Category","wpmsl") :$placeholder_settings['select_category_txt']); ?> </option>
+                        <?php foreach ( $terms as $term ) : ?>
+                            <option value="<?php echo $term->term_id; ?>"> <?php echo $term->name; ?> </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                
 
-                                    <?php
-                                    $terms = get_terms( 'store_locator_tag', array('hide_empty' => 0));
-                                    if ( $tag ): ?>
-                                        <select placeholder="<?php echo ($placeholder_settings['search_field_tags'] == ''? _e('Select Tags','wpmsl'):$placeholder_settings['search_field_tags']); ?>" name="store_locator_tag[]" class="wpsl_locator_category <?php echo $map_options['search_field_tags']?>" id="store_locator_tag" multiple="multiple">
-                                            <?php foreach ( $terms as $term ) : ?>
-                                                <option value="<?php echo $term->term_id; ?>"> <?php echo $term->name; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    <?php endif; ?>
-                                </div>
-                                <input id="store_locatore_search_btn" type="submit" value="<?php  _e("Search", 'wpmsl'); ?>" />
+                <?php
+                $terms = get_terms( 'store_locator_tag', array('hide_empty' => 0));
+                 ?>
+                <div class="store_locator_field <?php echo $map_options['tag']?>">
+                    <select placeholder="<?php echo ($placeholder_settings['search_field_tags'] == ''? _e('Select Tags','wpmsl'):$placeholder_settings['search_field_tags']); ?>" name="store_locator_tag[]" class="wpsl_locator_category " id="store_locator_tag" multiple="multiple">
+                        <?php foreach ( $terms as $term ) : ?>
+                            <option value="<?php echo $term->term_id; ?>"> <?php echo $term->name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+               
+                <div class="store_locator_field">               
+                <input id="store_locatore_search_btn" type="submit" value="<?php  _e("Search", 'wpmsl'); ?>" />
+            </div>
                             </form>
                         </div>
 
                     </div>
                 <?php }?>
                 <div class="col-right right-sidebar">
-                    <div id="map-container" style="position: relative;width: 100%;right: 0%;" class="<?php echo $map_options['listing_position']?>">
+                    <div id="map-container" style="position: relative;width: 100%;right: 0%;" class="<?php echo $grid_options['listing_position']?>">
                         <div id="map_loader" style="display:none;z-index: 9;height: <?php echo $map_options['height'].$map_options['heightunit']; ?>;width: <?php echo $map_options['width'].'%'; ?>;position: absolute;"><div class="uil-ripple-css" style="transform: scale(0.6); margin-left: auto; margin-right: auto;"><div></div><div></div></div></div>
                         <div id="store_locatore_search_results"></div>
                     </div>
                     <?php 
-					if( !empty( $grid_options['enable'] ) ) {						
+					if( !empty($grid_options['enable'] ) && isset($grid_options['listing_position']) && $grid_options['listing_position']!='below_map') {						
 					?>
-						<div class="map-listings <?php echo $map_options['listing_position']?>" style="height: <?php echo $map_options['height']?>px">
+						<div class="map-listings <?php echo $grid_options['listing_position']?>" style="height: <?php echo $map_options['height']?>px">
 						</div>
+                        
 					<?php } ?>      
-                    <div class="show-more">Show More</div>
+                    
                 </div>
 
             </div>
@@ -975,7 +996,7 @@ function store_locator_show_func($atts) {
                 jQuery( ".ob_stor-relocator" ).addClass( "full_width_div" );
                 jQuery( ".ob_stor-relocator" ).addClass( "full_width_div" );
                 jQuery( ".loader" ).append( '<img class="load-img" src="<?php echo apply_filters('wpmsl_loading_img',STORE_LOCATOR_PLUGIN_URL.'assets/img/loader.gif'); ?>" width="350" height="350" >' );
-                // jQuery( ".map-listings" ).append( '<input type="button" value="Show More" class="show-more"/>' );
+               
                 jQuery( ".ob_stor-relocator" ).append( '<div class="overlay-store"></div>' );
 
                 jQuery(document).ready(function () {
@@ -989,6 +1010,13 @@ function store_locator_show_func($atts) {
                 });
             </script>
         </div></div>
+        <?php 
+                    if( !empty( $grid_options['enable'] ) && isset($grid_options['listing_position']) && $grid_options['listing_position']=='below_map') {                      
+                    ?>
+                        <div class="map-listings <?php echo $grid_options['listing_position']?>" style="height: <?php echo $map_options['height']?>px">
+                        </div>
+                    <?php } ?>      
+                   
     <?php
     do_action('wpmsl_end_shortcode',$address,$atts['radius']);
     return ob_get_clean();
@@ -1103,53 +1131,12 @@ function make_search_request() {
 
 // Settings Page
 function store_locator_settings_page_callback() {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $_POST = array_map( 'stripslashes_deep', $_POST );
-        //handle save map settings
-        if (isset($_POST['map-settings'])) {
-            update_option('store_locator_map', $_POST['store_locator_map']);
-        }
-
-        //handle save api settings
-        if (isset($_POST['api-settings'])) {
-            update_option('store_locator_API_KEY', $_POST['store_locator_API_KEY']);
-            update_option('store_locator_street_API_KEY', $_POST['store_locator_street_API_KEY']);
-        }
-
-        //handle save grid settings
-        if (isset($_POST['grid-settings'])) {
-            $_POST['store_locator_grid']['columns'] = explode(",", $_POST['store_locator_grid']['columns']);
-            update_option('store_locator_grid', $_POST['store_locator_grid']);
-        }
-
-        //handle save single page settings
-        if (isset($_POST['single-settings'])) {
-            $_POST['store_locator_single']['items'] = explode(",", $_POST['store_locator_single']['items']);
-            update_option('store_locator_single', $_POST['store_locator_single']);
-        }
-
-        //handle save single page settings
-        if (isset($_POST['placeholder-setting'])) {
-            $placeholders = array();
-            $placeholders['get_location_btn_txt'] = $_POST['get_location_btn_txt'];
-            $placeholders['enter_location_txt'] = $_POST['enter_location_txt'];
-            $placeholders['select_category_txt'] = $_POST['select_category_txt'];
-            $placeholders['select_tags_txt'] = $_POST['select_tags_txt'];
-            update_option('placeholder_settings',$placeholders);
-        }
-    }
-
-    $store_locator_API_KEY  = get_option('store_locator_API_KEY');
-    $store_locator_street_API_KEY  = get_option('store_locator_street_API_KEY');
-    $map_options  = get_option('store_locator_map');
-    $grid_options = get_option('store_locator_grid');
-    $single_options = get_option('store_locator_single');
-    $placeholder_setting = get_option('placeholder_settings');
-
     include STORE_LOCATOR_PLUGIN_PATH . 'views/settings.php';
 }
-
+// go pro page 
+function store_locator_go_pro_page_callback(){
+  include(STORE_LOCATOR_PLUGIN_PATH.'inc\pro_details.php');
+}
 function sample_admin_notice__error($array) {
     $class = 'notice notice-error';
     // $error = '<p>For get your current location SSL must required</p>';
@@ -1179,129 +1166,15 @@ add_action( 'admin_notices', 'sample_admin_notice__error',10,1 );
 
 function admin_notice_array($array){
     Return array(
-        'wp-locator-ssl-error' => '<p>Get Current location functionality is disabled For Store Locator Plugin. You must enable SSL for your domain in order to enable this functionality.</p>',
+        'wp-locator-ssl-error' => '<p>'.__("Get Current location functionality is disabled For Store Locator Plugin. You must enable SSL for your domain in order to enable this functionality.","wpmsl").'</p>',
     );
-}
-
-// export csv
-add_action('admin_post_printStores.csv', 'export_store_locator_csv');
-function export_store_locator_csv() {
-    if (!current_user_can('manage_options'))
-        return;
-
-    header('Content-Type: application/csv');
-    header('Content-Disposition: attachment; filename=Stores.csv');
-    header('Pragma: no-cache');
-    $output_handle = @fopen('php://output', 'w');
-
-    $args = array(
-        'post_type' => 'store_locator',
-        'post_status' => 'publish',
-        'posts_per_page' => -1
-    );
-    $csv_fields = array('Code', 'Name', 'Address', 'Country', 'City', 'State', 'Phone', 'Fax', 'Website', 'Zipcode');
-    fputcsv($output_handle, $csv_fields);
-    $my_query = new WP_Query($args);
-    if ($my_query->have_posts()) {
-        while ($my_query->have_posts()) : $my_query->the_post();
-            global $post;
-            $csv_fields = array(
-                get_post_meta($post->ID, 'store_locator_code', true),
-                get_post_meta($post->ID, 'store_locator_name', true),
-                get_post_meta($post->ID, 'store_locator_address', true),
-                get_post_meta($post->ID, 'store_locator_country', true),
-                get_post_meta($post->ID, 'store_locator_city', true),
-                get_post_meta($post->ID, 'store_locator_state', true),
-                get_post_meta($post->ID, 'store_locator_phone', true),
-                get_post_meta($post->ID, 'store_locator_fax', true),
-                get_post_meta($post->ID, 'store_locator_website', true),
-                get_post_meta($post->ID, 'store_locator_zipcode', true),
-            );
-            fputcsv($output_handle, $csv_fields);
-        endwhile;
-    }
-    wp_reset_query();
-
-
-// Close output file stream
-    fclose($output_handle);
-
-    die();
-}
-
-
-add_action('admin_post_printSales.csv', 'export_sales_manager_csv');
-function export_sales_manager_csv() {
-    if (!current_user_can('manage_options'))
-        return;
-
-    header('Content-Type: application/csv');
-    header('Content-Disposition: attachment; filename=Sales_Managers.csv');
-    header('Pragma: no-cache');
-    $output_handle = @fopen('php://output', 'w');
-
-    $args = array(
-        'post_type' => 'sales_manager',
-        'post_status' => 'publish',
-        'posts_per_page' => -1
-    );
-    $csv_fields = array('Code', 'Title', 'Name', 'Phone','Email');
-    fputcsv($output_handle, $csv_fields);
-    $my_query = new WP_Query($args);
-    if ($my_query->have_posts()) {
-        while ($my_query->have_posts()) : $my_query->the_post();
-            global $post;
-            $csv_fields = array(
-                get_post_meta($post->ID, 'sales_manager_id', true),
-                get_post_meta($post->ID, 'sales_manager_title', true),
-                get_post_meta($post->ID, 'sales_manager_name', true),
-                get_post_meta($post->ID, 'sales_manager_phone', true),
-                get_post_meta($post->ID, 'sales_manager_email', true),
-            );
-            fputcsv($output_handle, $csv_fields);
-        endwhile;
-    }
-    wp_reset_query();
-
-
-// Close output file stream
-    fclose($output_handle);
-
-    die();
-}
-
-
-// get Statistics Ajax
-add_action('wp_ajax_show_store_statistics', 'show_store_statistics');
-function show_store_statistics() {
-    $store_id = NULL;
-    $transactions = array();
-    if(isset($_POST['store_id']) && $_POST['store_id']){
-        $store_id = $_POST['store_id'];
-        global $wpdb;
-        $transactions = $wpdb->get_results("SELECT DATE_FORMAT(date, '%Y-%m-%d') as date, COUNT(*) as total_count FROM store_locator_transactions WHERE post_id=".$store_id." GROUP BY DATE_FORMAT(date, '%Y-%m-%d')");
-        $piDataQuery = $wpdb->get_results("SELECT COUNT(*) as total_count, user_id as user FROM store_locator_transactions WHERE post_id=".$store_id." GROUP BY user_id");
-        $piData = array(array('user'=>'Visitor', 'total_count'=> 0),array('user'=>'Registered Users', 'total_count'=> 0));
-        foreach ($piDataQuery as $record) {
-            if($record->user == 0){
-                $piData[0]['total_count'] += $record->total_count;
-            }else{
-                $piData[1]['total_count'] += $record->total_count;
-            }
-        }
-//    echo $store_id.'<br><pre>';
-//    print_r($piData);
-//    exit;
-        include STORE_LOCATOR_PLUGIN_PATH . 'views/statistics_single_store.php';
-    }
-    wp_die();
 }
 
 add_action('wp_dashboard_setup', 'store_locator_custom_dashboard_widgets');
 
 function store_locator_custom_dashboard_widgets() {
     global $wp_meta_boxes;
-    wp_add_dashboard_widget('store_locator_custom_dashboard_widget', __('Top Search for Stores'), 'store_locator_custom_dashboard_widget_callback');
+    wp_add_dashboard_widget('store_locator_custom_dashboard_widget', __('Top Search for Stores','wpmsl'), 'store_locator_custom_dashboard_widget_callback');
 }
 
 
@@ -1313,8 +1186,8 @@ function store_locator_custom_dashboard_widget_callback() {
         ?>
         <table class="store_locator_data_dashboard">
             <tr>
-                <th><?php echo __("Store Name", 'store_locator'); ?></th>
-                <th><?php echo __("Hits", 'store_locator'); ?></th>
+                <th><?php echo __("Store Name", 'wpmsl'); ?></th>
+                <th><?php echo __("Hits", 'wpmsl'); ?></th>
             </tr>
             <?php foreach ($transactions as $store): ?>
                 <tr>
@@ -1326,7 +1199,7 @@ function store_locator_custom_dashboard_widget_callback() {
         <a href="<?php echo admin_url('edit.php?post_type=store_locator&page=statistics_submenu_page'); ?>" ><?php echo __("See more ...","store_locator"); ?></a>
         <?php
     }else{
-        echo "<div class='store_locator_nodata_dashboard'>"._("No Data found yet.")."</div>";
+        echo "<div class='store_locator_nodata_dashboard'>"._("No Data found yet.","wpmsl")."</div>";
     }
 }
 
@@ -1375,7 +1248,7 @@ function store_locator_gf_after_submission( $entry, $form ) {
         return;
     }
 
-    $message    = __('This message would tell you that new form entry has been submitted.');
+    $message    = __('This message would tell you that new form entry has been submitted.','wpmsl');
     $message   .= __('Title: ').rgar($entry, '1');
 
     $sales = get_post_meta($store_id, 'store_locator_sales', true);
@@ -1390,4 +1263,11 @@ function store_locator_gf_after_submission( $entry, $form ) {
             }
         }
     }
+}
+
+// Multi Languages code here //
+add_action('init','wpmsl_add_translation');
+
+function wpmsl_add_translation() {
+	 load_plugin_textdomain('wpmsl', FALSE,  basename( dirname( __FILE__ ) ) . '/languages/');
 }

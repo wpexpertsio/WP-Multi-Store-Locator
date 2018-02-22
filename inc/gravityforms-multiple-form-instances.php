@@ -33,7 +33,7 @@ class Gravity_Forms_Multiple_Form_Instances {
 	 */
 	public function gform_get_form_filter( $form_string, $form ) {
 		// if form has been submitted, use the submitted ID, otherwise generate a new unique ID
-		if ( isset( ($_POST['gform_random_id']) ) ) {
+		if (isset($_POST['gform_random_id'])) {
 			$random_id = absint( intval($_POST['gform_random_id']) ); // Input var okay.
 		} else {
 			$random_id = mt_rand();	

@@ -7,7 +7,7 @@ class wpmsl_nearby_widget extends WP_Widget {
 
     function __construct() {
         parent::__construct(
-                'wpmsl_widget', __('Stor Locator Nearby Stores', 'store_locator'), array('description' => __('Display nearby stores to website visitor', 'store_locator'),)
+                'wpmsl_widget', __('Stor Locator Nearby Stores', 'wpmsl'), array('description' => __('Display nearby stores to website visitor', 'wpmsl'),)
         );
     }
 

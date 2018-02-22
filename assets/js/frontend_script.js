@@ -410,7 +410,7 @@ function store_locator_map_initialize(locations) {
                 streetViewService.getPanoramaByLocation(latLng, STREETVIEW_MAX_DISTANCE, function (streetViewPanoramaData, status) {
 
                     //jQuery('.pano-loader').show();
-
+                    /*
                     if (status === google.maps.StreetViewStatus.OK) {
                         // ok
                         setTimeout(function(){
@@ -436,7 +436,8 @@ function store_locator_map_initialize(locations) {
                     } else {
                         jQuery('#pano-'+store_id).height('0px');
                         //jQuery('.pano-loader').hide();
-                    }
+                    } 
+                    */
                 });
 
 
@@ -449,8 +450,7 @@ function store_locator_map_initialize(locations) {
 
     store_locator_map.fitBounds(bounds);
 
-
-
+    
     jQuery('.store-direction').click(function (e) {
 
         e.preventDefault();
@@ -499,6 +499,7 @@ function store_locator_map_initialize(locations) {
         var latlngsp = lat.replace('.', '')+'-'+lng.replace('.', '');
         // get route from A to B
         calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB,latlngsp);
+        jQuery("html, body").animate({scrollTop: jQuery('#store-locator-id').offset().top -120 }, 300);
     });
 
 
@@ -529,6 +530,8 @@ function store_locator_map_initialize(locations) {
         store_locator_map.panTo(markers[marker_boune].getPosition());
         jQuery('.wpsl-choose-location-btn').css('background-color','#9e9e9e');
         jQuery(this).find('.wpsl-choose-location-btn').css('background-color','#FF5A1A');
+        //$('#store-locator-id')
+        jQuery("html, body").animate({scrollTop: jQuery('#store-locator-id').offset().top -120 }, 300);
     });
 
 }
@@ -561,3 +564,14 @@ function map_style(map_style) {
         return '[]';
     }
 }
+
+jQuery(window).on('resize', function() {
+    
+        if (jQuery(window).width() < 860) {
+            jQuery('.col-left.leftsidebar').addClass('wpml_above_map');
+        } 
+        else{
+            jQuery('.col-left.leftsidebar').removeClass('wpml_above_map');
+        }
+    
+});

@@ -47,7 +47,8 @@ if ($stores) {
         $infowindow_content = str_replace('{country}',get_post_meta($store->ID,'store_locator_country',true),$infowindow_content);
         $infowindow_content = str_replace('{zipcode}',get_post_meta($store->ID,'store_locator_zipcode',true),$infowindow_content);
         $infowindow_content = str_replace('{phone}',get_post_meta($store->ID,'store_locator_phone',true),$infowindow_content);
-        $infowindow_content = str_replace('{website}','<a href="'.get_post_meta($store->ID,'store_locator_website',true).'">Visit Website</a>',$infowindow_content);
+		$visit_website = __('Visit Website','wpmsl');
+        $infowindow_content = str_replace('{website}','<a href="'.get_post_meta($store->ID,'store_locator_website',true).'">'.$visit_website.'</a>',$infowindow_content);
 
         $infowindow_content .= '<div class="wpsl-distance">'.number_format($store->distance, 2) . ' '.$radius_unit.'</div>';
 
@@ -82,7 +83,7 @@ if( empty( $grid_options['enable'] ) ) {
 
 if ($map_options['enable']): $map_options['enable'];?>
 
-	<div id="store_locatore_search_map" style="height: <?php echo $map_options['height'] . $map_options['heightunit']; ?>;width: <?php echo $width?>;position:absolute" class="<?php echo $map_options['listing_position']?>"></div>
+	<div id="store_locatore_search_map" style="height: <?php echo $map_options['height'] . $map_options['heightunit']; ?>;width: <?php echo $width?>;position:absolute" class="<?php echo $grid_options['listing_position']?>"></div>
 
     <script>
         var locations = <?php echo json_encode($locations); ?>;
@@ -264,12 +265,14 @@ if ($map_options['enable']): $map_options['enable'];?>
                     $address = get_post_meta($store->ID,'store_locator_address',true);
 
                     echo '<div class="store-list-details">';
-                    echo "<div class='store-direction' data-direction='".$store->lat.",".$store->lng."' style='cursor:pointer;'>";
-					_e('Get Direction','wpmsl');
-                    echo "<div jstcache='600' class='section-hero-header-directions-icon' style='background-image:url(".STORE_LOCATOR_PLUGIN_URL."assets/img/directions-1x-20150909.png);background-size: 14px;width: 14px;height: 14px;background-repeat: no-repeat;float: right;'></div>
-                        </div>";
+                   
                     echo '<div class="store-list-address">';
+                    if($single_options['page']){
 					$linkable_title = '<a href="'.get_permalink( $store->ID ).'" target="_blank">' . get_the_title($store->ID) . '</a>';
+                    }
+                    else{
+                        $linkable_title =  get_the_title($store->ID);
+                    }
                     echo '<input type="hidden" id="pano-address-'.$store->ID.'" class="pano-address" value="'.$address.'" />';
                     $list_content = '<div class="wpsl-name">' . $linkable_title . '</div>';
                     $list_content .= '<div class="wpsl-distance">'.number_format($store->distance, 2) . ' '.$radius_unit.'</div>';
@@ -305,9 +308,14 @@ if ($map_options['enable']): $map_options['enable'];?>
                     echo '</div>';
 
 					 echo '</div>';
+                      echo "<div class='store-direction' data-direction='".$store->lat.",".$store->lng."' style='cursor:pointer;'>";
+                    _e('Get Direction','wpmsl');
+                    echo "<div jstcache='600' class='section-hero-header-directions-icon' style='background-image:url(".STORE_LOCATOR_PLUGIN_URL."assets/img/directions-1x-20150909.png);background-size: 14px;width: 14px;height: 14px;background-repeat: no-repeat;float: right;'></div>
+                        </div>";
 					echo '</div>';
                     $index++;
-
+                    
+                    
 					do_action('wpmls_after_list_item',$store);
 					
                 echo '</div>';
@@ -321,7 +329,7 @@ if ($map_options['enable']): $map_options['enable'];?>
         <?php endif; ?>
         <?php $elements = $grid_options['columns']; ?>
         <?php if (!$grid_options['scroll'] && !empty($elements[0])): ?>
-            <div id="store_locator_load_more" style="<?php echo (count($stores) > $grid_options['number']) ? 'display: block;' : 'display: none;'; ?>"> Load more ...</div>
+            <div id="store_locator_load_more" style="<?php echo (count($stores) > $grid_options['number']) ? 'display: block;' : 'display: none;'; ?>"><?php _e('Load more ...','wpmsl');?></div>
             <script>
                 jQuery('#map_loader').hide();
                 jQuery('#store_locator_load_more').click(function () {
