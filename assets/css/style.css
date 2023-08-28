@@ -1,219 +1,45 @@
-@-webkit-keyframes uil-ripple {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        margin: 0 0 0 0;
-    }
-    33% {
-        width: 44%;
-        height: 44%;
-        margin: -22% 0 0 -22%;
-        opacity: 1;
-    }
-    100% {
-        width: 88%;
-        height: 88%;
-        margin: -44% 0 0 -44%;
-        opacity: 0;
-    }
-}
-@-webkit-keyframes uil-ripple {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        margin: 0 0 0 0;
-    }
-    33% {
-        width: 44%;
-        height: 44%;
-        margin: -22% 0 0 -22%;
-        opacity: 1;
-    }
-    100% {
-        width: 88%;
-        height: 88%;
-        margin: -44% 0 0 -44%;
-        opacity: 0;
-    }
-}
-@-moz-keyframes uil-ripple {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        margin: 0 0 0 0;
-    }
-    33% {
-        width: 44%;
-        height: 44%;
-        margin: -22% 0 0 -22%;
-        opacity: 1;
-    }
-    100% {
-        width: 88%;
-        height: 88%;
-        margin: -44% 0 0 -44%;
-        opacity: 0;
-    }
-}
-@-ms-keyframes uil-ripple {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        margin: 0 0 0 0;
-    }
-    33% {
-        width: 44%;
-        height: 44%;
-        margin: -22% 0 0 -22%;
-        opacity: 1;
-    }
-    100% {
-        width: 88%;
-        height: 88%;
-        margin: -44% 0 0 -44%;
-        opacity: 0;
-    }
-}
-@-moz-keyframes uil-ripple {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        margin: 0 0 0 0;
-    }
-    33% {
-        width: 44%;
-        height: 44%;
-        margin: -22% 0 0 -22%;
-        opacity: 1;
-    }
-    100% {
-        width: 88%;
-        height: 88%;
-        margin: -44% 0 0 -44%;
-        opacity: 0;
-    }
-}
-@-webkit-keyframes uil-ripple {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        margin: 0 0 0 0;
-    }
-    33% {
-        width: 44%;
-        height: 44%;
-        margin: -22% 0 0 -22%;
-        opacity: 1;
-    }
-    100% {
-        width: 88%;
-        height: 88%;
-        margin: -44% 0 0 -44%;
-        opacity: 0;
-    }
-}
-@-o-keyframes uil-ripple {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        margin: 0 0 0 0;
-    }
-    33% {
-        width: 44%;
-        height: 44%;
-        margin: -22% 0 0 -22%;
-        opacity: 1;
-    }
-    100% {
-        width: 88%;
-        height: 88%;
-        margin: -44% 0 0 -44%;
-        opacity: 0;
-    }
-}
-@keyframes uil-ripple {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-        margin: 0 0 0 0;
-    }
-    33% {
-        width: 44%;
-        height: 44%;
-        margin: -22% 0 0 -22%;
-        opacity: 1;
-    }
-    100% {
-        width: 88%;
-        height: 88%;
-        margin: -44% 0 0 -44%;
-        opacity: 0;
-    }
-}
-.uil-ripple-css {
-    background: none;
-    position: relative;
-    width: 200px;
-    height: 200px;
-}
-.uil-ripple-css div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: 0;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    border-radius: 50%;
-    border-width: 12px;
-    border-style: solid;
-    -ms-animation: uil-ripple 2s ease-out infinite;
-    -moz-animation: uil-ripple 2s ease-out infinite;
-    -webkit-animation: uil-ripple 2s ease-out infinite;
-    -o-animation: uil-ripple 2s ease-out infinite;
-    animation: uil-ripple 2s ease-out infinite;
-}
-.uil-ripple-css div:nth-of-type(1) {
-    border-color: #afafb7;
-}
-.uil-ripple-css div:nth-of-type(2) {
-    border-color: #5cffd6;
-    -ms-animation-delay: 1s;
-    -moz-animation-delay: 1s;
-    -webkit-animation-delay: 1s;
-    -o-animation-delay: 1s;
-    animation-delay: 1s;
-}
-
-
-
 #store_locator_map {
     height: 100%;
 }
-
-/*#store_locatore_search_input{
-    width: 75%
-}*/
-
 .store_locator_settings_div label{
     width: 300px;
     display: inline-block;
     vertical-align: top;
 }
-
 .store_locator_settings_div textarea{
     height: 120px;
     width: 70%;
 }
+li.select2-selection__choice {
+        width: 90%;
+    text-align: center;
+}
+input#store_locatore_search_btn {
+    background-color: #252525 !important;
+}
 
+span.select2.select2-container.select2-container--default.select2-container--focus.select2-container--below {
+        width: 100% !important;
+}
+span.select2.select2-container.select2-container--default.select2-container--below {
+    width: 100% !important;
+}
+span.select2.select2-container.select2-container--default {
+    width: 100% !important;
+}
+span.select2-container.select2-container--default.select2-container--open {
+   width: 25.7% !important;
+    /* top: auto !important; */
+}
+span.select2-dropdown.select2-dropdown--below {
+    width: 100% !important;
+}
+span.select2-results {
+    width: 100% !important;
+}
+ul#select2-store_locator_tag-results {
+    width: 100% !important;
+}
 #store_locator_load_more {
     background-color: #e8e8e8;
     cursor: pointer;
@@ -221,15 +47,12 @@
     padding: 10px;
     text-align: center;
 }
-
 #store_locator_load_more:hover {
     background-color: #e0e0e0;
 }
-
 #chartAllStoresdiv a, #chartStorediv a, #chartStoredivPi a{
     display: none !important;
 }
-
 .store_locator_chartNoData{
     background-color: #f3f3f3;
     font-size: 15px;
@@ -237,18 +60,10 @@
     text-align: center;
     width: 100%;
 }
-
-/* 
- * Generic Styling, for Desktops/Laptops 
- */
 table.store_locator_grid_results { 
     width: 100%; 
     border-collapse: collapse; 
 }
-/* Zebra striping */
-/*.store_locator_grid_results tr:nth-of-type(odd) { 
-    background: #eee; 
-}*/
 .store_locator_grid_results th { 
     background: #333; 
     color: white; 
@@ -259,45 +74,33 @@ table.store_locator_grid_results {
     border: 1px solid #ccc; 
     text-align: center; 
 }
-
 /* ****************************** Front End ***************************** */
-
 #store_locator_search_form input#store_locatore_get_btn {
-/*    width: 20%;*/
     padding: 13px;
-/*    margin-right: .5%;*/
     font-size: 14px;
     text-transform: capitalize;
     border-radius: 0px;
+    width: 100% !important;
 }
 #store_locator_search_form #store_locatore_search_input {
-/*    max-width: 75%;*/
-width: auto;
+    width: 92% !important;
     padding: 10px;
     background: transparent;
     border-radius: 0px;
     margin-top: 10px;
 }
-/*#store_locator_search_form #store_locatore_search_input ::-webkit-input-placeholder{	color:#FFF!important;}
-#store_locator_search_form #store_locatore_search_input ::-moz-placeholder {	color:#FFF!important;}
-#store_locator_search_form #store_locatore_search_input :-ms-input-placeholder{	color:#FFF!important;}
-#store_locator_search_form #store_locatore_search_input :-moz-placeholder {  color: #FFF!important;}*/
-
+    
 #store_locator_search_form select#store_locatore_search_radius {
-    margin: 10px 10px 10px 0px;
+    margin: 10px 0px 10px 0px;
     padding: 10px;
     display: block;
     float: left;
-/*    width: 20%;*/
+}  
+.store-locator-item .store-list-details .wpsl-name a {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
 }
-
-input#store_locatore_search_input {
-   /* color: #FFF!important;*/
-}
-select#store_locatore_search_radius {
-    /*color: #FFF!important;*/
-}	
-
 a.select2-choice {
     color: #FFF!important;
 }
@@ -305,7 +108,6 @@ a.select2-choice {
     display: block;
     float: left;
     margin: 10px 10px 10px 0px;
-/*    width: 20%;*/
 }
 #store_locator_search_form div#s2id_store_locator_category a{
     padding: 7px;
@@ -313,7 +115,7 @@ a.select2-choice {
     background-image: none;
     border-color: #DDDDDD;
     height: auto;
-	background:transparent;
+    background:transparent;
 }
 #store_locator_search_form div#s2id_store_locator_category a span:last-child{
     border-radius: 0px;
@@ -326,52 +128,120 @@ a.select2-choice {
 #store_locator_search_form div#s2id_store_locator_tag{
     display: block;
     float: left;
-    margin: 10px 10px 10px 0;
-    min-width: 135px;
+    margin: 10px 0px;
+    width: 100% !Important;
 }
 #store_locator_search_form div#s2id_store_locator_tag ul{
     padding: 3px;
     background-image: none;
     border-color: #dddddd;
-	    background: transparent;
+    background: transparent;
 }
-
 #store_locator_search_form input#store_locatore_search_btn {
     padding: 13px;
-/*    width: 20%;*/
-    display: block;
+    z-index: 99;
     margin: 10px 0;
     clear: both;
     font-size: 14px;
     text-transform: capitalize;
     border-radius: 0px;
+    left: 0px !important;
+    background-color: #252525 !important;
+    top: 260px;
+    color: white !important;
 }
-.slide-left {
-    /*margin-bottom: -288px;
--webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;*/
-  
+.map-direction-panel {
+    display: none;
+}
+a.wpml-close-direction{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin: 0;
+    line-height: 0;
+    padding: 5px 0px;
+    color: #fff;
+    display: block;
+    background: transparent;
+    border-radius: 50%;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    box-shadow: unset;
+    text-decoration: none;
+}
+a.wpml-close-direction:hover{
+    background: rgba(95, 95, 95, 0.5);
+    box-shadow: unset;
+}
+a.wpml-toggle-box {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    margin: 0;
+    line-height: 0;
+    padding: 5px 0px;
+    color: #fff;
+    display: block;
+    background: transparent;
+    border-radius: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: unset;
+    text-decoration: none;
+}
+a.wpml-toggle-box:hover{
+    box-shadow: unset;
+    text-decoration: none;
+    color: #fff;
+}
+a.wpml-close-direction span,
+a.wpml-toggle-box span{
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    line-height: 22px;
+}
+a.map-directions {
+    cursor: pointer;
+    margin-left: 10px;
+    text-decoration: underline;
+    color: #333;
+    box-shadow: unset;
+}
+span.directions-btns a.wpml-close-direction {
+    position: relative;
+    line-height: 1;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 5px;
+    color: #333;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: unset;
+}
+span.directions-btns a.wpml-close-direction:hover,
+a.map-directions:hover{
+    background: unset;
+    box-shadow: unset;
 }
 .col-left{position:relative;}
 .closesidebar {
-	/* border-radius:0px; */
-	/* border-top-left-radius: 0; */
-	/* border-bottom-left-radius: 0; */
-	background:url('../img/search-options.png') no-repeat center rgb(92, 94, 85);    
-	    background-size: 16px;
+    background:url('../img/search-options.png') no-repeat center rgb(92, 94, 85);    
+        background-size: 16px;
     position: absolute;
     top: 28%;
     right: -17px;
     height: 118px!important;
     border: 3px solid rgb(92, 94, 85);
-	box-shadow: 2px 2px 4px rgba(35, 35, 35, 0.15);
+    box-shadow: 2px 2px 4px rgba(35, 35, 35, 0.15);
     border-radius: 0 10px 10px 0px;
 }
 .gm-style-iw span{ display: block;}
 .select2-container{margin-right:0px!important}
-
 .img-content img {
     border: 2px solid rgb(92, 94, 85);
     box-shadow: 8px 5px 16px rgb(173, 173, 173);
@@ -380,78 +250,47 @@ a.select2-choice {
     box-shadow-radius: 4px 4px 4px 4px;
 }
 .closesidebar.arrow_right {
-/* 	height: 40px!important;
-	width:20px!important; */
-	background:url('../img/arrow-left.png') no-repeat center rgb(92, 94, 85)!important;    background-size: 100%!important;}
-.leftsidebar{
-	/*-webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;*/
-}
+    background:url('../img/arrow-left.png') no-repeat center rgb(92, 94, 85)!important;    
+    background-size: 100%!important;}
 .store_locator_grid_results tr {
     text-transform: capitalize;
-}
-.store_locator_working_hours tr.store-locator-open{
-   /* color: green;*/
-}
-.store_locator_working_hours tr.store-locator-closed{
-    /*color: #F97C7C;*/
-}
-table.store_locator_working_hours {
-    margin-bottom: 0px;
-}
-.store_locator_working_hours tr:nth-of-type(odd) {
-    /*background: #eee;*/
-}
-.store_locator_working_hours tr:nth-of-type(even) {
-    /*background-color: white;*/
 }
 .store-locator-item span.store-locator-name {
     display: block;
     margin: 10px 0;
 }
-/*.store-locator-item-container .store-locator-item .store-locator-name a{
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-}
-.store-locator-item-container .store-locator-item .store-locator-name a {
-    font-size: 20px;
-    font-weight: bold;
-    box-shadow: none;
-}*/
-/* scrollbar css*/
-/* Let's get this party started */
 .store-locator-item-container::-webkit-scrollbar,
+select::-webkit-scrollbar,
+#directionsPanel::-webkit-scrollbar,
 select::-webkit-scrollbar {
-    width: 14px;
+    width: 10px;
+    height: 10px;
+    background-color: #f1f1f1;
+    border: unset;
+    background-clip: padding-box;
+    border-radius: 0px;
+    touch-action: none;
 }
-
 /* Track */
 .store-locator-item-container::-webkit-scrollbar-track,
+select::-webkit-scrollbar-track,
+#directionsPanel::-webkit-scrollbar-track,
 select::-webkit-scrollbar-track{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    -webkit-border-radius: 0px;
-
-    border-radius: 0px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 2px;
 }
-
 /* Handle */
 .store-locator-item-container::-webkit-scrollbar-thumb,
-select::-webkit-scrollbar-thumb{
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    background: rgba(0, 0, 0, 0.8);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-    -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+select::-webkit-scrollbar-thumb,
+#directionsPanel::-webkit-scrollbar-thumb,
+select::-webkit-scrollbar-thumb
+{
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: rgb(66, 133, 244);
+    height: 40px;
 }
-.store-locator-item-container::-webkit-scrollbar-thumb:window-inactive,
-select::-webkit-scrollbar-thumb:window-inactive{
-    background: rgba(208, 0, 0, 0.4);
-}
-/*scrollbar css end*/
 .store-locator-item-container .store-locator-item div a:hover,
 .store-locator-item-container .store-locator-item div a:focus {
     text-decoration: none;
@@ -465,18 +304,14 @@ select::-webkit-scrollbar-thumb:window-inactive{
     margin: 0px 2px;
 }
 .store-locator-item-container .store-locator-item > div {
-	margin: 8px 0;
+    margin: 8px 0;
     position: relative;
-    /*border: 1px solid #dedede;*/
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-decoration: none;
-    /*background: whitesmoke;*/
-	
 }
 .vstore-locator-item-container ::-webkit-scrollbar {
     width: 1em;
 }
- 
 .store-locator-item-container ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
@@ -500,12 +335,12 @@ select::-webkit-scrollbar-thumb:window-inactive{
     text-align: left;
 }
 .store-locator-item-container .store-locator-item {
-    border-top: solid 1px #CCC;
-	padding: 8px;
+    border-top: 1px solid #dddddd; /* border color updated noor*/
+    padding: 8px;
     cursor: pointer;
-	float: left;
-	position: relative;
-	width: 100%;
+    float: left;
+    position: relative;
+    width: 100%;
 }
 .store-locator-item-container .store-locator-item  h1.store-locator-name {
     margin-bottom: 8px;
@@ -518,7 +353,6 @@ span.store_locator_start:after {
     margin: 0 4px;
 }
 /* ////////////// Single Store ////////////// */
-
 .store_locator_has_coverImage .store_locator_header img {
     width: 100%;
 }
@@ -559,7 +393,6 @@ span.store_locator_start:after {
 }
 .store_locator_container .store_locator_body .store_locator_content ul li span.store_locator_managers_titles {
     vertical-align: top;
-  
 }
 .store_locator_container .store_locator_body .store_locator_content ul li .store_locator_managers_wrapper {
     display: inline-block;
@@ -593,11 +426,20 @@ span.store_locator_start:after {
     font-size: 12px;
 }
 /* ****************************** Back End ***************************** */
-
+.store_locator_map_settings label, .store_locator_map_settings tr th , .store_locator_grid_settings tr th{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 35px;
+    text-align: left;
+}
+.store_locator_grid_settings ul.listing_postions_grid_settings li {
+    display: block;
+    width: 100%;
+}
 /* ////////////// Setting ////////////// */
 .store_locator_map_settings ul li {
     display: inline-block;
-    margin: 5px;
+    /*margin: 5px;*/
 }
 .store_locator_tip{
     display: block;
@@ -610,51 +452,35 @@ span.store_locator_start:after {
 }
 .row.ob_stor-relocator{width:100%; overflow:hidden;}
 .full_width_div .col-left{
-	float:left;
-	width: 300px;
-	}
+    float:left;
+    width: 300px;
+    }
 .full_width_div  .col-right{
-	/* float: right; */
-	width: 100%;
+    /* float: right; */
+    width: 100%;
     right: 0%;
     position: absolute;
-		}
+        }
 #store_locatore_search_input,
 #s2id_store_locator_tag,
-#store_locatore_get_btn{ width:271px!important;}
+#store_locatore_get_btn{ width:328px!important;}
 .leftsidebar #store_locatore_search_radius, .leftsidebar #s2id_store_locator_category {
-    /*width: 131px!important;*
-    min-width: 131px;
-   /* max-width: 131px;*/
     font-size: 14px;
     line-height: 19px;
 }
-/*#store_locatore_search_radius,
-#store_locatore_search_input{ border-radius:0px; border-color:#CCC!important;background: transparent!important;}
-#s2id_store_locator_category,
-#s2id_store_locator_category > a{ shadow:0px 0px!important;
-    -webkit-box-shadow:0 0!important;
-    box-shadow: 0 0 !important;
-	}
-	
-*/
 .ob_stor-relocator{
-	display:block!important; 
-	max-width:100%!important; 
-	float:left;
-	position: relative;
+    display:block!important; 
+    max-width:100%!important; 
+    float:left;
+    position: relative;
 }
 .col-left.leftsidebar {
-	width: 300px;
+    width: 300px;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 999;
-    /* background: rgba(14, 14, 14, 0.45); */
-    /* background: url(sidebartrans.png) repeat; */
-    /* padding: 5px 6px; */
-    /* border: 2px solid rgb(92, 94, 85); */
     box-shadow: 8px 5px 16px rgba(47, 47, 47, 0.2);
-    /* border-radius: 5px 5px 5px 5px; */
     padding: 10px 11px;
     background-color: white;
 }
@@ -665,11 +491,9 @@ span.store_locator_start:after {
     top: 0;
 }
 .full_width_div{
-	    /*width: 100%!important;*/
-		clear: both;
-		margin-bottom:20px;
+    clear: both;
+    margin-bottom:20px;
 }
-
 img.load-img {
     position: absolute;
     z-index: 10;
@@ -678,23 +502,27 @@ img.load-img {
     right: 0;
     margin: 0 auto;
     width: 130px;
-	/* display:none; */
+    /* display:none; */
 }
 .overlay-store {
     background-color: white;
     position: absolute;
+        top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     opacity: 0.5;
     z-index: 999999999999;
     height: 100%;
     width: 100%;
-	display:none;
-	
+    display:none;
+    
 }
 .store-locator-item-container {
     overflow-y: auto;
     /* height: 238px; */
-	    height: 100%;	
-		font-size: 11px;
+        height: 100%;   
+        font-size: 11px;
 }
 .entry-content.full_width_div {
     position: relative;
@@ -717,20 +545,12 @@ input#store_locatore_search_btn {
     background: #252525;
     width: 40%;
 }
-
 .select2-search input{     background: rgb(92, 94, 85)!important; color:#FFF!important}
 li.select2-no-results{     background: #999!important;}
-
-
 div#store_locatore_search_map .gm-style-iw h3 {
     padding: 5px 0px 0px;
-    /* background-color: #4285F4; */
-    /* color: #fff; */
-    /* font-family: Roboto, Arial, sans-serif; */
     margin: 0px;
 }
-
-
 .section-hero-header-directions-base.ripple-container {
     width: 56px;
     height: 56px;
@@ -743,7 +563,7 @@ div#store_locatore_search_map .gm-style-iw h3 {
     color: #4285F4;
 }
 
-a.store-direction {
+.compatibility a.store-direction {
     color: white !important;
     float: right;
     display: block;
@@ -755,7 +575,8 @@ a.store-direction {
     top: 5px;
 }
 
-button, input[type="button"], input[type="submit"] {
+#store_locator_search_form button, #store_locator_search_form input[type="button"], 
+#store_locator_search_form input[type="submit"] {
     background-color: #222;
     border: 0;
     -webkit-border-radius: 2px;
@@ -767,7 +588,6 @@ button, input[type="button"], input[type="submit"] {
     display: inline-block;
     font-size: 14px;
     font-size: 0.875rem;
-   /* font-weight: 800 !important;*/
     line-height: 1;
     font-weight: normal;
     padding: 1em 2em;
@@ -775,41 +595,35 @@ button, input[type="button"], input[type="submit"] {
     -webkit-transition: background 0.2s;
     transition: background 0.2s;
 }
-
 .wpsl_search_radius {
     padding: 8px;
     margin: 8px 0px;
-    width: 98%;
+    width: 100%;
     border-radius: 4px;
     border-color: #d0d0d0;
 }
-
 .wpsl_store_locator_category {
     padding: 8px;
     margin: 8px 0px;
-    width: 98%;
+    width: 100%;
     border-radius: 4px;
     border-color: #d0d0d0;
 }
-
 .wpsl_search_input {
     background-color: white;
     color: black;
     width: 100%;
 }
-
 select#wpsl_store_locator_category {
     padding: 10px;
-    width: 98%;
+    width: 100%;
     border-radius: 4px;
     border-color: #d0d0d0;
 }
-
 .select2-display-none {
     background-color: white;
     border-top: solid 1px #CCC;
 }
-
 ul.select2-results li {
     border-bottom: solid 1px #CCC;
     font-size: 12px;
@@ -820,56 +634,44 @@ div#select2-drop {
     background-color: white;
     color: black;
 }
-
 input#store_locatore_search_input {
     border: solid 1px #CCC;
 }
-
 form#store_locator_search_form input[type="text"], select {
     color: #484848;
 }
 .map-listings {
-    /*position: absolute;
-    right: 0%;
-    height: 500px;*/
     width: 26%;
     top: 0%;
     background-color: white;
-	box-shadow: 0px 0px 15px #CCC;
+    box-shadow: 0px 0px 15px #CCC;
     border-left: solid 1px #CCC;
 }
-
 .store-locator-item:nth-child(even) {
     background-color: #f1f1f1;
 }
-
-
 .store-locator-item:hover {
     background-color: #f7f7f7;
 }
-
 .store-list-details {
-    width: 80%;
+    width: 85%;
     float: right;
 }
-
 .circle-count {
     background-color: rgb(202, 66, 66);
     width: 30px;
     height: 30px;
     border-radius: 50%;
     position: absolute !important;
-    /* top: 56px; */
     text-align: center;
     color: white;
     font-size: 15px;
     line-height: 31px;
-	left: 5%;
+    left: 3%;
 }
 .col-left {
     margin: 10px;
 }
-
 .search-options-btn {
     background-color: rgb(202, 66, 66);
     color: white;
@@ -877,38 +679,51 @@ form#store_locator_search_form input[type="text"], select {
     height: 40px;
     line-height: 40px;
     font-size: 20px;
-	cursor: pointer;
+    position: relative;
 }
-
+div#directionsPanel {
+    overflow-y: scroll;
+    height: 240px;
+    display: none;
+}
 .store-search-fields {
-	display: none;
     margin-top: 8px;
 }
-
 .store-locator-not-found {
     font-size: 128px;
     color: #b1b1b1;
     font-weight: bold;
     text-align: center;
-    margin: 60px	 0px;
 }
-
 .store-locator-not-found p {
     font-size: 24px;
 }
-
 .wpsl-list-title {
-	font-size: 18px;
+    font-size: 18px;
     text-align: center;
-    padding: 8px;
-    background-color: #e4e4e4;
-    color: #7b7b7b;
+    background-color: #ca4242;
+    color: #ffffff;
+    padding: 5px;
 }
-
+.direction-toggle-addresses {
+    padding: 8px;
+    background: #f5f5f5;
+}
+.direction-toggle-addresses button#get-directions,
+.direction-toggle-addresses input {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 15px;
+    padding: 8px;
+    border-radius: 0;
+}
+.direction-toggle-addresses button#get-directions{
+    background: #000;
+    color: #fff;
+}
 .wpsl-wesite-link a {
     color: #FF5A1A;
 }
-
 .wpsl-headline-title {
     background-color: #FF5A1A;
     width: 100%;
@@ -918,14 +733,12 @@ form#store_locator_search_form input[type="text"], select {
     text-align: center;
     padding: 20px 0px;
 }
-
 .wpsl-name {
-	font-size: 12px;
+    font-size: 12px;
     font-weight: bold;
 }
-
 .wpsl-choose-location-btn {
-	background-color: #9e9e9e;
+    background-color: #9e9e9e;
     color: white;
     padding: 14px;
     width: 100%;
@@ -933,16 +746,12 @@ form#store_locator_search_form input[type="text"], select {
     margin: 10px 0px;
     border-radius: 8px;
 }
-
 .store-locator-item:hover .wpsl-choose-location-btn {
-	background-color: #FF5A1A;
+    background-color: #FF5A1A;
 }
-
 .store-list-address {
     width: 100%;
 }
-
-
 .sponsored-clinic {
     text-align: center;
     color: #31c1d2;
@@ -952,7 +761,6 @@ form#store_locator_search_form input[type="text"], select {
     margin: auto !important;
     font-weight: bold;
 }
-
 .sponsored-clinic {
     text-align: center;
     color: #31c1d2;
@@ -962,57 +770,89 @@ form#store_locator_search_form input[type="text"], select {
     margin: auto !important;
     font-weight: bold;
 }
-
+div#store_locatore_search_map.right {
+    left: 0%;
+}
 .map-listings.right {
     position: absolute;
     right: 0%;
 }
-
-div#store_locatore_search_map.right {
-    left: 0%;
-}
-
 .map-listings.left {
     position: absolute;
     left: 0%;
 }
-
 div#store_locatore_search_map.left {
     right: 0%;
 }
-
 .ob_stor-relocator {
-
     margin-bottom: 0!important;
 }
-
 .ob_stor-relocator {
-
     position: initial!important;
     margin: 0 auto;
-
 }
-
+.ob_stor-relocator.fullscreenMap {
+    position: relative !important;
+    margin: 0 auto;
+}
 .page-search-clinics div#main{
     padding: 0!important;
-
 }
-
-
 img.load-img {
-
     top: 50%!important;
-
-
 }
 /**
 * RESPONSVE
 
 **/
+/*noor coded here*/
+.regular_map_filters .regular-filter .tooltiptext{
+visibility: hidden;
+    position: absolute;   
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 1px 13px;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity .6s;
+    line-height: 26px;
+    font-size:14px;
+        left: -25px;
+    top: 25px;
+}
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+.regular_map_filters .regular-filter:hover .tooltiptext{
+    visibility: visible;
+    opacity: 1;
+}
 
+.regularMap .store-locator-item.active-item a {
+    color: #fff;
+}
 
+@media only screen and (min-width: 800px) {
+    .left .fullwidth-custom-map #store_locatore_search_map{
+        width: 74% !important;
+        right: 0px;
+    }
+
+    .right .fullwidth-custom-map #store_locatore_search_map{
+        width: 74% !important;
+        left: 0px;
+    }
+}
 @media only screen and (max-width: 1199px) {
-
     .map-listings {
         width: 30%;
     }
@@ -1022,95 +862,167 @@ img.load-img {
     }
 }
 @media only screen and (max-width: 1110px) and (min-width: 992px) {
-
     .store-list-details .wpsl-choose-location-btn {
-
         padding: 11px 15px!important;
         font-size: 11px!important;
     }
-
 }
-
-
 @media only screen and (max-width: 992px) {
-
     .top-details {
-
         height: 23px;
     }
-
     .map-listings {
         width: 40%;
     }
-
     div#store_locatore_search_map.left {
         width: 60%!important;
     }
+    .wp_store_locator_multiplemaps .wp_multi_store_locator_map_cat{   
+        min-width: 226px!important;
+        display: inline-block!important;
+    }
+}
+/*Noor coded here*/
+/*#regularMap #map-container{
+    position: relative;
+    width: 67%;
+    float: left;
+}
+#regularMap  .map-listings.right {
+    position: relative;
+    float: right;
+}*/
+.regularMap .map-listings.below_map {
+    width: 100%;
 }
 
-
+.btn-km-mile{
+    background-image: -webkit-linear-gradient(#6d7070, #474949 50%, #3d3f3f);
+    background-image: -o-linear-gradient(#6d7070, #474949 50%, #3d3f3f);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6d7070), color-stop(50%, #474949), to(#3d3f3f));
+    background-image: linear-gradient(#6d7070, #474949 50%, #3d3f3f);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6d7070', endColorstr='#ff3d3f3f', GradientType=0);
+    -webkit-filter: none;
+    filter: none;
+    border: 1px solid #2e2f2f;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+    padding: 3px 4px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #ffffff;
+    background-color: #474949;
+}
+.btn-km-mile input[type="radio"]{
+    opacity: 0;
+    width: 0;
+}
+/*Noor coded here*/
+#regularMap .regular_map_filters {
+    float: right;
+}
+#regularMap .mile-km-btns-switcher {
+    display: flex;
+    margin: 13px 0;
+}
+#regularMap .regular_map_filters .regular-filter {
+    float: left;
+    margin: 0px 10px;
+    position: relative;
+}
+#regularMap .regular_map_filters .regular-filter .dashicons{
+    width: 35px;
+    height: 35px;
+    font-size: 30px;
+    line-height: 50px;
+    cursor: pointer;
+    float: right;
+}
+.regularMap .direction-toggle-addresses button#get-directions .dashicons{
+    line-height: 0.5;
+}
+/*Noor code end Here*/
+#regularMap #regular_map_header_content .regular_map_filters{
+        width: 33.333333%; 
+        float: right; 
+        line-height: 52px;
+}
+#regularMap #regular_map_header_content .store-search-fields{
+    width: 66.666666%; 
+    float:left;
+}
+@media only screen and (max-width: 980px) { 
+    #regularMap #regular_map_header_content .regular_map_filters{
+        width: 100%;
+        position: relative;
+    }
+    #regularMap #regularMap .category-filter {
+        float: left!important;
+        position: relative!important;
+        width: 87%!important;
+        border: 1px solid;
+    }
+    #regularMap #regular_map_header_content .store-search-fields{
+        width: 100%;
+        float: left;
+        margin: 31px 5px;
+        margin: 20px auto;
+        float: none;
+    }
+    #regularMap  div#regular_map_header_content {
+        position: relative;
+        width: 100%;
+        margin-top: 0px;
+        overflow:hidden;
+    }
+    #regularMap #regular_map_header_content .store-search-fields.show {
+        width: 100%!important;
+        margin: 20px auto;
+        float: none!important;
+    }
+    #regularMap  #regular_map_header_content .store-search-fields{
+        width:100%;
+    }
+}
+/*Noor coded here end*/
+.regularMap .store-infowindow {
+    min-width: 300px;
+    padding: 10px 0 0 0;
+}/*
+div#regularMap form {
+    display: flex !important;
+}*/
 @media only screen and (max-width: 810px) and (min-width: 769px){
-
     .store-list-details .wpsl-choose-location-btn {
         padding: 10px 12px!important;
         font-size: 12px!important;
     }
-
-    .store-list-details .wpsl-name {
-
-        font-size: 11px!important;
-    }
-
 }
 
 @media only screen and (max-width: 768px) {
-    /*
-    .full_width_div {
-
-        height: 865px!important;
+    .regularMap .store-infowindow{
+        min-width: 100%;    
     }
-    */
     .map-listings {
         width:50%;
     }
-
     div#store_locatore_search_map.left {
         width: 50%!important;
     }
-
 }
-
-@media screen and (max-width: 681px) and (min-width: 600px) {
-
-    /*.store-list-details .wpsl-name {*/
-
-        /*font-size: 12px!important;*/
-    /*}*/
-}
-
 @media screen and (max-width: 656px) and (min-width: 600px) {
-
-    /*.store-list-details .wpsl-name {*/
-
-        /*font-size: 12px!important;*/
-    /*}*/
-
     .store-list-details .wpsl-choose-location-btn {
 
         font-size: 13px!important;
     }
 }
-
-
 @media screen and (max-width: 636px) and (min-width: 600px){
-
     .store-list-details .wpsl-choose-location-btn {
         padding: 10px 13px!important;
 
     }
 }
-
-
 @media screen and (max-width: 636px) and (min-width: 600px) {
     .show-more {
     display:none
@@ -1118,9 +1030,9 @@ img.load-img {
 }
 
 @media screen and (max-width: 600px) {
-
-
-
+#regularMap #map-container{
+    width: 100%;
+    }
     .show-more {
         background: #f45d21;
         text-align: center;
@@ -1136,19 +1048,14 @@ img.load-img {
         color: white;
         padding: 5px 0 5px 0;
     }
-
-
-
     .store-list-details .wpsl-name {
-        font-size: 14px!important;
-        height: 40px;
+        /* font-size: 14px!important;
+       height: 40px;*/
         overflow: hidden;
     }
-
     .store-list-details .wpsl-name {
-        font-size: 14px!important;
+       /* font-size: 14px!important;*/
     }
-
     div#store_locatore_search_results {
         line-height: 0;
     }
@@ -1156,134 +1063,113 @@ img.load-img {
     .map-listings {
     width: 100% !important;
 
-	}
+    }
 
-	div#store_locatore_search_map.left{
-		top: 220px;
-		width: 100% !important;
-	}
-
-
-
-	.wpmsl-searchbox{
-		width:80%;
-	}
-
-	.wpmsl-searchbox span {
-		display: none;
-		border-bottom: solid 1px;
-		width: 100%;
-	}
-
-	.wpmsl-searchbox select {	
-		width: 100%;
-		font-size: 14px !important;
-		padding: 5px !important;
-		border: solid 1px !important;
-		border-radius: 3px !important;
-		height: auto !important;
-		margin: 6px 0px !important;
-	}
-
-	.wpmsl-searchbox input {
-		    width: 100% !important;
-		margin: 0px !important;
-		font-size: 14px !important;
-		padding: 5px !important;
-		border: solid 1px !important;
-		border-radius: 3px !important;
-		margin: 4px 0px !important;
-		height: 38px !important;
-	}
-
+    div#store_locatore_search_map.left{
+        top: 220px;
+        width: 100% !important;
+    }
+    .wpmsl-searchbox{
+        width:80%;
+    }
+    .wpmsl-searchbox span {
+        display: none;
+        border-bottom: solid 1px;
+        width: 100%;
+    }
+    .wpmsl-searchbox select {   
+        width: 100%;
+        font-size: 14px !important;
+        padding: 5px !important;
+        border: solid 1px !important;
+        border-radius: 3px !important;
+        height: auto !important;
+        margin: 6px 0px !important;
+    }
+    .wpmsl-searchbox input {
+            width: 100% !important;
+        margin: 0px !important;
+        font-size: 14px !important;
+        padding: 5px !important;
+        border: solid 1px !important;
+        border-radius: 3px !important;
+        margin: 4px 0px !important;
+        height: 38px !important;
+    }
     .map-listings.left.resp-height, .full_width_div.resp-height {
         height: auto!important;
     }
 
-
+    form#store_locator_search_form {
+        margin: 0;
+    }
 }
-
 .wpsl-distance {
     background-color: rgb(49, 193, 210);
     color: white;
-    width: 60px;
+    max-width: 100px;
     text-align: center;
-    padding: 2px;
+    padding: 1px 0;
     border-radius: 5px;
-    font-size: 11px;
+    font-size: 12px;
 }
-
+.wpsl-phone {
+    margin-top: 4px;
+}
 .store-infowindow .wpsl-choose-location-btn {
-
     padding: 15px 12px!important;
     font-size: 15px;
 }
-
 .store-infowindow p {
     font-size: 13px;
     font-weight: 400;
     COLOR: #4d4c4c;
 }
-
 .store-infowindow b {
     font-size: 16px;
     COLOR: #4d4c4c;
 }
-
-
 .store-infowindow .wpsl-choose-location-btn a,.store-infowindow .wpsl-choose-location-btn a:hover{
     color:white!important;
 }
-
-
 @media only screen and (max-width: 842px) and (min-width: 769px){
-    /*
-    .full_width_div {
-        height: 824px!important;
-    }
-    */
     .map-listings.left {
         height: 738px!important;
     }
-
     div#store_locatore_search_map.left {
-
         height: 738px!important;
     }
 }
-
 @media screen and (max-width: 600px){
-
     .store-list-details .wpsl-choose-location-btn {
         padding: 15px 19px!important;
         font-size: 13px;
     }
-
-    div#store_locatore_search_map {
-        /*height: 400px!important;*/
-    }
-
     div#store_locatore_search_map.left {
         top: 0;
         position: relative!important;
     }
-    
     .full_width_div {
        height: auto !important;
     }
-    
-
     .map-listings.left {
         position: relative;
         left: inherit;
-        height: 1118px!important;
+        height: auto !important;
     }
     #store_locatore_search_map{
         position: relative !important;
         width: 100% !important;
     }
-    .map-listings{
-        position: relative !important;
+    .map-listings.right{
+        position: unset !important;
+        height: auto !important;
+    }
+    .store-locator-item-container{
+        height: auto; 
+    }
+    .map-listings.below_map{
+        position: unset !important;
     }
     .ob_stor-relocator .loader > div > div.col-left{
         padding: 0px;
@@ -1292,46 +1178,37 @@ img.load-img {
         border: unset;
         box-shadow: unset;
     }
-}
-
-
-@media screen and (max-width: 348px){
-
-    .store-locator-item-container .store-locator-item {
-
-        padding: 10px;
-
+    div.store-direction{
+        position: relative !important;
+        bottom: 0px !important;
     }
-
-
+    .wp_store_locator_multiplemaps .wp_multi_store_locator_map_cat{
+        display:inline-block!important
+    }
+}
+@media screen and (max-width: 348px){
+    .store-locator-item-container .store-locator-item {
+        padding: 10px;
+    }
     .store-locator-item .top-details {
         margin: 2px!important;
-
     }
 }
-
-
 p.cdc-link a {
     color: black;
     font-size: 11px;
 }
-
-.wpsl-distance {
-    margin-top: 2px!important;
+.wpsl-address, .wpsl-city {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 18px;
 }
-
 .store-infowindow p {
     margin: 4px 0!important;
 }
-
 .store-infowindow {
     width: 200px;
 }
-
-form#store_locator_search_form input, select, .select2-container {
-    /*width: 100% !important;*/
-}
-
 .pano-loader {
     background-color: white;
     opacity: 0.6;
@@ -1341,81 +1218,55 @@ form#store_locator_search_form input, select, .select2-container {
     height: 100%;
     width: 200px;
 }
-
 .pano-loader img {
     margin-top: 40%;
 }
-
 .pano-loader.pano-hide {
     display: none !important;
 }
-
 .left-skip {
     float: right !important;
 }
-
 .hide-field {
     display: none !important;
 }
-
 ul.hide_fields li {
     float: left;
     width: 100%;
 }
-
 .store_days_time {
     display: none;
 }
-
 .store-list-address p {
     margin: 6px;
 }
-
 .store-list-address i {
     color: #31c1d2;
 }
-
 .store-list-address {
     font-size: 14px;
 }
-
 .wpsl-name {
-    font-size: 15px;
+    font-size: 1rem;
     font-weight: bold;
-    width: 150px;
+    margin-bottom: 5px;
 }
-
 p.time {
     border-bottom: solid 1px #CCC;
 }
-
 img.store-img {
     width: 200px;
     max-height: 200px;
 }
 
-div.store-direction {
-    position: absolute;
-    /* float: right; */
-    right: 0px;
-   
-    width: auto;
-    background-color: white;
-    color: #4285f4;
-    text-align: center;
-    padding: 4px;
-    border: solid 1px #CCC;
-    border-radius: 6px;
-}
 .below_map div.store-direction{
      bottom: 40px;
 }
 .section-hero-header-directions-icon{
-	margin-left: 3px!important;
+    margin-left: 3px!important;
 }
-
 .info-window-direction {
-	position: relative !Important;
+    position: relative !Important;
     float: left !important;
     right: 0px;
     width: auto;
@@ -1427,7 +1278,6 @@ div.store-direction {
     border-radius: 6px;
     margin: 4px 0px;
 }
-
 .ob_stor-relocator .wpml_above_map {
     width: 100% !important;
     border: unset !important;
@@ -1442,8 +1292,8 @@ div#store_locatore_search_map.below_map {
 .map-listings.below_map{
     width: 100%;
     height: auto !important;
-    position: relative;
-    display: inline-block;
+    position: unset;
+    display: block;
 }
 .map-listings.below_map .store-locator-item-container{
     overflow-y: unset;
@@ -1452,6 +1302,7 @@ div#store_locatore_search_map.below_map {
     right: 0 !important;
     left: unset !important;
     float: right !important;
+    position: absolute;
 }
 .wpml_above_map form#store_locator_search_form {
     display: inline-block;
@@ -1461,10 +1312,10 @@ div#store_locatore_search_map.below_map {
 }
 .wpml_above_map .store_locator_field {
     float: left;
-    width: 19%;
+    width: 18%;
     vertical-align: middle;
-    line-height: 60px;
-    margin-right: 1%;
+    margin-left: 5px; /* Noor udpated here*/
+    margin-right: 5px; /* Noor udpated here*/
 }
 .wpml_above_map .store_locator_field input, .wpml_above_map .store_locator_field select  {
     width: 100% !important;
@@ -1474,10 +1325,10 @@ div#store_locatore_search_map.below_map {
     position: relative;
 }
 .wpml_above_map input#store_locatore_search_input{
-	width: 100% !important;
+    width: 100% !important;
 }
 .wpml_above_map input#s2id_autogen1 {
-	    height: 30px;
+        height: 30px;
     width: 100% !important;
 }
 .wpml_above_map #s2id_store_locator_tag{
@@ -1491,62 +1342,6 @@ div#store_locatore_search_map.below_map {
     .wpml_above_map .full_width_div{
         height: unset !important;
     }
-}
-
-/* backend */
-.map_Styles_div p {
-    float: left;
-    width: 240px;
-}
-ul.listing_postions_grid_settings li{
-    float: left;
-    margin-right: 20px;
-}
-.wpml_get_pro{
-    border: 1px solid #f05174;
-    background: #f05174;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 7px;
-    display: block;
-    text-align: center;
-}
-
-.wpml_get_pro_wrapper h2 {
-    text-align: center;
-    font-size: 30px;
-}
-.wpml_get_pro_wrapper h3{
-    line-height: 30px;
-    font-size: 18px;
-    text-align: center;
-}
-.wpml_get_pro_wrapper h2 span {
-        color: #f05174;
-    font-size: 40px;
-    font-weight: 700;
-}
-.wpml_get_pro_wrapper h4 {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 26px;
-}
-.wpml_get_pro_wrapper .wpml_row {
-    width: 100%;
-    overflow: hidden;
-}
-.wpml_get_pro_wrapper .wpml_row .wpml_col{
-    width: 25%;
-    float: left;
-}
-.wpml_get_pro_wrapper .wpml_row .wpml_col .wpml_col_inner{
-    margin: 15px;
-    border: 1px solid #ccc;
-}
-.wpml_get_pro_wrapper .wpml_row .wpml_col img{
-    width: 100%;
 }
 .wpml_row.btns{
     text-align: center;
@@ -1573,7 +1368,589 @@ ul.listing_postions_grid_settings li{
 }
 form#store_locator_search_form select{
     border-radius: 0px;
+    margin-top: 10px !important;
 }
-.ob_stor-relocator div.store-direction {
+.store-locator-not-found  .fa-map-marker:before {
+    font-size: 90px;
+}
+.wpml_above_map .search-options-btn:after {
+    content: "";
+    float: right;
+    margin-right: 1%;
+}
+/* tesla */
+ .wp_store_locator_multiplemaps .wp_multi_store_locator_search {
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    width: auto !important;
+    background: transparent !important;
+}
+.wp_store_locator_multiplemaps .store-search-fields {
+    display: block;
+    margin-top: 8px;
+}
+
+.wp_store_locator_multiplemaps .wp_multi_store_locator_maps_cats {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+        z-index: 99;
+}
+.wp_store_locator_multiplemaps .wp_multi_store_locator_maps_cats_inner {
+  
+    margin: 0 auto;
+    text-align: center;
+    display: -webkit-inline-box;
+    }
+.wp_store_locator_multiplemaps .wp_multi_store_locator_map_cat {
     position: relative;
+     border: none;
+    padding: 14px 70px 15px 20px;
+    min-width: 19%;
+    margin: 5px;
+    cursor: pointer;
+    border-bottom: 3px solid #c00;
+    background: #FAFAFA;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    display: block;
+}
+.wp_store_locator_multiplemaps .map_cat_filtered{
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+.wp_store_locator_multiplemaps .wp_multi_store_locator_map_list_item, 
+.wp_store_locator_multiplemaps .wp_multi_store_locator_map_list_item_mobile {
+    position: absolute;
+    z-index: 100;
+    top: 80px;
+    background: #fff;
+    left: 10px;
+    width: 300px;
+    height: auto;
+    padding: 15px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+}
+.wp_store_locator_multiplemaps .wp_multi_store_locator_map_list_item .close-list-item ,
+.wp_store_locator_multiplemaps .wp_multi_store_locator_map_list_item_mobile .close-list-item{
+    position: absolute;
+    right: 0;
+    top: 0px;
+    top: 0px;
+    margin: 5px;
+    padding: 3px;
+    border: unset;
+    border-radius: 100%;
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 3px;
+}
+.wp_store_locator_multiplemaps div.store-direction {
+    right: unset;
+    left: 0px;
+    position: relative;
+    width: 150px;
+}
+.wp_store_locator_multiplemaps .map-listings{
+    display: none;
+}
+.wp_store_locator_multiplemaps .wp_multi_store_locator_search_container{
+    position: relative;
+}
+.wp_store_locator_multiplemaps.fullscreenMap{
+    height: 100% !important;
+    position: relative;
+}
+.wp_store_locator_multiplemaps  #store_locatore_search_map{
+    height: 100%;
+    width: 100%;
+}
+@media screen and (max-width: 600px){
+    .wp_store_locator_multiplemaps .wp_multi_store_locator_search{
+        position: relative;
+        top: unset;
+        left: unset;
+        right: unset;
+        z-index:99999;
+    }
+    #store_locator_search_form #store_locatore_search_input {
+    width: 100% !important;
+    }
+    .wp_multi_store_locator_map_list_item, .wp_multi_store_locator_map_list_item_mobile {
+        left: 15px;
+        width: 300px;
+    }
+    .wpmsl_search_mobile_wrapper{
+        display: none;
+    background: rgba(6, 6, 6, 0.37);
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    height: max-content !important;
+    z-index: 99;
+    padding: 10px;
+    padding-top:55px;
+    padding-bottom:25px;
+    width:100%;
+    }
+    .mobile_wrapper_close_btn {
+    position: absolute;
+    z-index: 100;
+    display: block !important;
+    top: 2px;
+    right: 55px;
+    background: black;
+    padding: 4px 10px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 4px solid red;
+    }
+    .wpmsl_toggleClass .src_icon{
+        display: none !important;
+    }
+    .wpmsl_toggleClass .exit_icon{
+        display: block !important;
+    }
+}
+/* fullscreen ends */
+/* Regular Map */
+.regularMap .store-list-details {
+    width: 100%;
+    margin: 0!important;
+}
+/*.regularMap form#store_locator_search_form{
+    display: flex;
+    padding: 5px;
+}
+.regularMap  #store_locator_search_form #store_locatore_search_input{
+    background: #fff;
+    height: 38px;
+    margin: 0px;
+    width: 94% !important;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    padding-left: 12px!important;
+}*/
+.regularMap  .map-listings {
+    width: 33.333333%;
+    box-shadow: unset;
+}
+.regularMap .wpsl-name {
+    float: left;
+    width: unset;
+}
+.regularMap .wpsl-distance {
+    float: right;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #3399f3;
+    border-radius: 10px;
+}
+.regularMap  button#store_locatore_search_btn{
+    background: #3e648d;
+    background-repeat: no-repeat;
+    height: 38px;
+    border-radius: 0;
+    border: 1px solid #345578;
+    padding: 1em 1.5em;
+    line-height: 0;
+}
+#regularMap #directionsPanel{
+    box-sizing:border-box;
+    font-size: 15px;
+    }
+#regularMap .direction-toggle-addresses button#get-directions .fa-car:before{
+    color:#FFF!important;
+}
+.regularMap  .store-locator-item:nth-child(even){
+    background: #fff;
+}
+.regularMap  .store-locator-item.active-item {
+    background-color: #446e9b !important;
+    border-color: #446e9b;
+    color: #fff;
+}
+.regularMap .store-infowindow .visit-website{
+    text-decoration: none;
+        margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: -webkit-linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-image: -o-linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6d94bf), color-stop(50%, #446e9b), to(#3e648d));
+    background-image: linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6d94bf', endColorstr='#ff3e648d', GradientType=0);
+    -webkit-filter: none;
+    filter: none;
+    border: 1px solid #345578;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+        display: block;
+    width: 100%;
+        color: #ffffff;
+    background-color: #446e9b;
+    border-color: #446e9b;
+}
+.regularMap .store-infowindow  a.store-direction {
+    float: unset;
+    position: unset;
+    right: unset;
+    bottom: unset;
+    display: unset;
+}
+@media screen and (max-width: 600px){
+    .regularMap .wpsl-distance{
+        display:block;
+        }
+    .regularMap .ob_stor-relocator{
+    height: 100% !important;
+}
+.regularMap .store-locator-item-container  > div{
+    margin: 0px;
+    margin-top: 1px;
+}
+.regularMap .store-locator-item .wpsl-name{
+    font-size: 13px;
+    font-weight: 400;
+}
+.regularMap .store-locator-item{
+    padding: 11px 10px 4px 10px;    
+}
+.wp_store_locator_multiplemaps .wp_multi_store_locator_search #store_locatore_search_btn {
+    width: 100%;   
+    top: 13px;
+    right: 0;
+    border-radius: 0;
+    margin-top: 8px !important;
+    margin: 0 auto!important;
+}
+}
+
+/* Ends regular map */
+.wp_multi_store_locator_map_cat img {
+    display: inline-block;
+    width: 20px;
+}
+.wp_multi_store_locator_map_cat.map_cat_filtered {
+    border-bottom: none;
+}
+.regularMap .wpsl-name {
+    font-size: 18px;
+    font-weight: 400!important;
+    color: #555555;
+    letter-spacing: 1px;
+}
+.regularMap .store-locator-item{
+    padding:11px 10px 4px 22px;/* padding updated noor*/
+}
+.regularMap .store-locator-item.active-item .wpsl-name {
+    color: white;
+}
+.regularMap .store-locator-item.active-item .wpsl-distance{
+    background-color: white;
+    color:#3399f3;
+}
+.regularMap .direction-toggle-addresses label {
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #666666;
+    background-color: #ffffff;
+}
+.regularMap .direction-toggle-addresses input{
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #666666;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    margin-bottom: 15px;
+}
+.regularMap  .direction-toggle-addresses {
+    padding: 14px;
+}
+.regularMap .direction-toggle-addresses .routeEnd-btn{
+    position: relative;
+}
+.regularMap .direction-toggle-addresses button#get-directions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: -webkit-linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-image: -o-linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6d94bf), color-stop(50%, #446e9b), to(#3e648d));
+    background-image: linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6d94bf', endColorstr='#ff3e648d', GradientType=0);
+    -webkit-filter: none;
+    filter: none;
+    border: 1px solid #345578;
+    color: #ffffff;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 1em 1.5em;
+}
+.regularMap button#store_locatore_search_btn i, button#get-directions i{
+    font-size: 16px;
+}
+.regularMap .current-location-zoom .current-location-holder {
+    font-size: 18px;
+    font-weight: 400!important;
+    color: #555555;
+    letter-spacing: 1px;
+    padding: 13px 20px 6px 20px;
+    float: left;
+}
+.regularMap .mile-km-btns-switcher>.btn-km-mile:first-child:not(:last-child){
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+.regularMap .mile-km-btns-switcher>.btn-km-mile:last-child:not(:first-child){
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    padding-right: 8px;
+}
+.regularMap label.btn-km-mile.active {
+    background: black;
+}
+.regularMap .current-location-zoom {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.regularMap .zoom-icons-holder {
+    position: absolute;
+    right: 0px; /* updated here*/
+    top: 13px;
+}
+.regularMap div#zoom-out {
+    display: inline-block;
+    width: 17px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.regularMap div#zoom-in {
+    display: inline-block;
+    cursor: pointer;
+}
+.regularMap .zoom-icons-holder i {
+    font-size: 21px;
+}
+.regularMap .direction-filter i {
+    cursor: pointer;
+}
+.regularMap .direction-filter i:hover {
+    color: #3399f3;
+}
+.regularMap .category-filter i {
+    cursor: pointer;
+}
+.regularMap .category-filter i:hover {
+    color: #3399f3;
+}
+.regularMap .mile-km-btns-switcher label {
+    cursor: pointer;
+}
+.regularMap .store-locator-item:hover {
+    background: #f1f1f1;
+}
+.regularMap a.wpsl-zoom-to {
+    margin-right: 7px;
+    border-right: solid 1px;
+    padding-right: 7px;
+    line-height: 30px;
+    color: #3399f3;
+}
+.regularMap .store-infowindow p {
+    line-height: 24px!important;
+}
+.regularMap .row.ob_stor-relocator {
+    border: solid 1px #d0d0d0;
+}
+.regularMap  .store-infowindow h2 {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0;
+}
+/* Directions */
+#directionsPanel .adp-warnbox{
+    display: none;
+}
+#directionsPanel  .adp-details, .adp-legal {
+    display: none;
+}
+.start-direction-address {
+    border: 1px solid #555555;
+    display: flex;
+    width: 100%;
+    padding: 5px;    
+    margin-bottom: 10px;
+    position: relative;
+}
+ul.map_dropdown_filter {
+        list-style: none;
+    position: absolute;
+    background: #fff;
+    margin: 0;
+    left: -50px;
+    border: 1px solid #aaa;
+    width: max-content;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: none;
+}
+ul.map_dropdown_filter label {
+    margin: 0;
+    padding: 5px;
+    width: 100%;
+    display: block;
+}
+ul.map_dropdown_filter li {
+    line-height: 22px;
+    margin: 0;
+    padding: 0;
+}
+@media screen and (max-width: 500px){
+    .wp_store_locator_multiplemaps .wp_multi_store_locator_map_list_item_mobile{
+        width: 85%;
+    }
+}
+.wp_multi_store_locator_map_cat span.cross_cat {
+    position: absolute;
+    top: 0;
+    right: 6px;
+    color: #999;
+}
+.wp_multi_store_locator_map .wp-map-error {
+    width: 100%;
+    text-align: center;
+    padding: 150px 0;
+    background: #f5f5f5;
+    font-size: 26px;
+    color: #333;
+}
+div#store-locator-id .loader {
+    position: relative;
+}
+a#get-my-location {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-decoration: none;
+    box-shadow: unset;
+    padding: 8px;
+    cursor: pointer;
+    color: #333;
+}
+a#get-my-location span {
+    font-size: 30px;
+}
+.directions-toggle-panel .form-group {
+    position: relative;
+}
+.directions-toggle-panel input#routeStart {
+    padding-right: 30px;
+}
+.wpsl-image {
+    float: right;
+    width: 80px;
+}
+.map-search-window  select#wpsl_store_locator_category {
+    margin-bottom: 20px;
+}
+.map-search-window .select2-search input {
+    background: rgb(92 94 85 / 3%)!important;
+    color: #FFF!important;
+}
+.wpsl-image img {
+    width: 80%;
+    height: auto;
+}
+#wpm-search-bar  .ul#select2-store_locator_tag-container {
+    padding-left: 0px;
+    margin-left: 0px;
+}
+#wpm-search-bar  ul#select2-store_locator_tag-container button.select2-selection__choice__remove {
+    padding: 0px 0px 0px 2px;
+    background: transparent;
+    color: #7f54b3;
+}
+#wpm-search-bar  li.select2-selection__choice {
+    display:inline-block;
+    width:auto;
+	padding: 3px 5px 3px 18px;
+    margin: 3px 0 3px 5px;
+    position: relative;
+    line-height: 13px;
+    color: #333;
+    cursor: default;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0,0,0,.05);
+    box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0,0,0,.05);
+    background-clip: padding-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #e4e4e4;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#f4f4f4', GradientType=0);
+    background-image: -webkit-gradient(linear,0 0,0 100%,color-stop(20%,#f4f4f4),color-stop(50%,#f0f0f0),color-stop(52%,#e8e8e8),color-stop(100%,#eee));
+    background-image: -webkit-linear-gradient(top,#f4f4f4 20%,#f0f0f0 50%,#e8e8e8 52%,#eee 100%);
+    background-image: -moz-linear-gradient(top,#f4f4f4 20%,#f0f0f0 50%,#e8e8e8 52%,#eee 100%);
+    background-image: linear-gradient(to bottom,#f4f4f4 20%,#f0f0f0 50%,#e8e8e8 52%,#eee 100%);
+}
+wpm-search-bar span.select2-dropdown.select2-dropdown--below {
+    width: 278px!important;
+}
+#wpm-search-bar ul#select2-store_locator_tag-container {
+    margin-left: 0px;
 }

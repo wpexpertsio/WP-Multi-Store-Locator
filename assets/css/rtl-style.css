@@ -278,9 +278,9 @@ width: auto;
     border-radius: 0px;
     margin-top: 10px;
 }
-/*#store_locator_search_form #store_locatore_search_input ::-webkit-input-placeholder{	color:#FFF!important;}
-#store_locator_search_form #store_locatore_search_input ::-moz-placeholder {	color:#FFF!important;}
-#store_locator_search_form #store_locatore_search_input :-ms-input-placeholder{	color:#FFF!important;}
+/*#store_locator_search_form #store_locatore_search_input ::-webkit-input-placeholder{  color:#FFF!important;}
+#store_locator_search_form #store_locatore_search_input ::-moz-placeholder {    color:#FFF!important;}
+#store_locator_search_form #store_locatore_search_input :-ms-input-placeholder{ color:#FFF!important;}
 #store_locator_search_form #store_locatore_search_input :-moz-placeholder {  color: #FFF!important;}*/
 
 #store_locator_search_form select#store_locatore_search_radius {
@@ -296,7 +296,7 @@ input#store_locatore_search_input {
 }
 select#store_locatore_search_radius {
     /*color: #FFF!important;*/
-}	
+}   
 
 a.select2-choice {
     color: #FFF!important;
@@ -313,7 +313,7 @@ a.select2-choice {
     background-image: none;
     border-color: #DDDDDD;
     height: auto;
-	background:transparent;
+    background:transparent;
 }
 #store_locator_search_form div#s2id_store_locator_category a span:last-child{
     border-radius: 0px;
@@ -333,7 +333,7 @@ a.select2-choice {
     padding: 3px;
     background-image: none;
     border-color: #dddddd;
-	    background: transparent;
+        background: transparent;
 }
 
 #store_locator_search_form input#store_locatore_search_btn {
@@ -345,7 +345,7 @@ a.select2-choice {
     font-size: 14px;
     text-transform: capitalize;
     border-radius: 0px;
-	float:right;
+    float:right;
 }
 .slide-left {
     /*margin-bottom: -288px;
@@ -357,17 +357,17 @@ a.select2-choice {
 }
 .col-left{position:relative;}
 .closesidebar {
-	/* border-radius:0px; */
-	/* border-top-left-radius: 0; */
-	/* border-bottom-left-radius: 0; */
-	background:url('../img/search-options.png') no-repeat center rgb(92, 94, 85);    
-	    background-size: 16px;
+    /* border-radius:0px; */
+    /* border-top-left-radius: 0; */
+    /* border-bottom-left-radius: 0; */
+    background:url('../img/search-options.png') no-repeat center rgb(92, 94, 85);    
+        background-size: 16px;
     position: absolute;
     top: 28%;
     right: -17px;
     height: 118px!important;
     border: 3px solid rgb(92, 94, 85);
-	box-shadow: 2px 2px 4px rgba(35, 35, 35, 0.15);
+    box-shadow: 2px 2px 4px rgba(35, 35, 35, 0.15);
     border-radius: 0 10px 10px 0px;
 }
 .gm-style-iw span{ display: block;}
@@ -381,11 +381,11 @@ a.select2-choice {
     box-shadow-radius: 4px 4px 4px 4px;
 }
 .closesidebar.arrow_right {
-/* 	height: 40px!important;
-	width:20px!important; */
-	background:url('../img/arrow-left.png') no-repeat center rgb(92, 94, 85)!important;    background-size: 100%!important;}
+/*  height: 40px!important;
+    width:20px!important; */
+    background:url('../img/arrow-left.png') no-repeat center rgb(92, 94, 85)!important;    background-size: 100%!important;}
 .leftsidebar{
-	/*-webkit-transition: all 1s ease-in-out;
+    /*-webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;*/
@@ -466,13 +466,13 @@ select::-webkit-scrollbar-thumb:window-inactive{
     margin: 0px 2px;
 }
 .store-locator-item-container .store-locator-item > div {
-	margin: 8px 0;
+    margin: 8px 0;
     position: relative;
     /*border: 1px solid #dedede;*/
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-decoration: none;
     /*background: whitesmoke;*/
-	
+    
 }
 .vstore-locator-item-container ::-webkit-scrollbar {
     width: 1em;
@@ -502,11 +502,11 @@ select::-webkit-scrollbar-thumb:window-inactive{
 }
 .store-locator-item-container .store-locator-item {
     border-top: solid 1px #CCC;
-	padding: 8px;
+    padding: 8px;
     cursor: pointer;
-	float: left;
-	position: relative;
-	width: 105%;
+    float: left;
+    position: relative;
+    width: 105%;
 }
 .store-locator-item-container .store-locator-item  h1.store-locator-name {
     margin-bottom: 8px;
@@ -611,15 +611,15 @@ span.store_locator_start:after {
 }
 .row{width:100%; overflow:hidden;}
 .full_width_div .col-left{
-	float:left;
-	width: 300px;
-	}
+    float:left;
+    width: 300px;
+    }
 .full_width_div  .col-right{
-	/* float: right; */
-	width: 100%;
+    /* float: right; */
+    width: 100%;
     right: 0%;
     position: absolute;
-		}
+        }
 #store_locatore_search_input,
 #s2id_store_locator_tag,
 #store_locatore_get_btn{ width:271px!important;}
@@ -636,14 +636,14 @@ span.store_locator_start:after {
 #s2id_store_locator_category > a{ shadow:0px 0px!important;
     -webkit-box-shadow:0 0!important;
     box-shadow: 0 0 !important;
-	}
-	
+    }
+    
 */
 .ob_stor-relocator{
-	display:block!important; 
-	width:100%!important; 
-	float:left;
-	position: relative;
+    display:block!important; 
+    width:100%!important; 
+    float:left;
+    position: relative;
 }
 .col-left.leftsidebar {
     top: 0;
@@ -665,9 +665,9 @@ span.store_locator_start:after {
     top: 0;
 }
 .full_width_div{
-	    width: 100%!important;
-		clear: both;
-		margin-bottom:20px;
+        width: 100%!important;
+        clear: both;
+        margin-bottom:20px;
 }
 
 img.load-img {
@@ -678,7 +678,7 @@ img.load-img {
     right: 0;
     margin: 0 auto;
     width: 130px;
-	/* display:none; */
+    /* display:none; */
 }
 .overlay-store {
     background-color: white;
@@ -687,17 +687,17 @@ img.load-img {
     z-index: 999999999999;
     height: 100%;
     width: 100%;
-	display:none;
-	
+    display:none;
+    
 }
 .store-locator-item-container {
     overflow-y: auto;
     /* height: 238px; */
-	height: 100%;	
-	font-size: 11px;
-	overflow-x: hidden;
-	    direction: rtl!important;
-			
+    height: 100%;   
+    font-size: 11px;
+    overflow-x: hidden;
+        direction: rtl!important;
+            
 }
 .entry-content.full_width_div {
     position: relative;
@@ -832,7 +832,7 @@ input#store_locatore_search_input {
 
 form#store_locator_search_form input[type="text"], select {
     color: #484848;
-	float:right;
+    float:right;
 }
 .map-listings {
     /*position: absolute;
@@ -841,7 +841,7 @@ form#store_locator_search_form input[type="text"], select {
     width: 26%;
     top: 0%;
     background-color: white;
-	box-shadow: 0px 0px 15px #CCC;
+    box-shadow: 0px 0px 15px #CCC;
     border-left: solid 1px #CCC;
 }
 
@@ -857,7 +857,7 @@ form#store_locator_search_form input[type="text"], select {
 .store-list-details {
     width: 80%;
     float: left;
-	margin-left:10px!important;
+    margin-left:10px!important;
 }
 
 .circle-count {
@@ -871,7 +871,7 @@ form#store_locator_search_form input[type="text"], select {
     color: white;
     font-size: 15px;
     line-height: 31px;
-	right: 5%;
+    right: 5%;
 }
 .col-left {
     margin: 10px;
@@ -884,11 +884,11 @@ form#store_locator_search_form input[type="text"], select {
     height: 40px;
     line-height: 40px;
     font-size: 20px;
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .store-search-fields {
-	display: none;
+    display: none;
     margin-top: 8px;
 }
 
@@ -897,7 +897,7 @@ form#store_locator_search_form input[type="text"], select {
     color: #b1b1b1;
     font-weight: bold;
     text-align: center;
-    margin: 60px	 0px;
+    margin: 60px     0px;
 }
 
 .store-locator-not-found p {
@@ -905,7 +905,7 @@ form#store_locator_search_form input[type="text"], select {
 }
 
 .wpsl-list-title {
-	font-size: 18px;
+    font-size: 18px;
     text-align: center;
     padding: 8px;
     background-color: #e4e4e4;
@@ -927,12 +927,12 @@ form#store_locator_search_form input[type="text"], select {
 }
 
 .wpsl-name {
-	font-size: 12px;
+    font-size: 12px;
     font-weight: bold;
 }
 
 .wpsl-choose-location-btn {
-	background-color: #9e9e9e;
+    background-color: #9e9e9e;
     color: white;
     padding: 14px;
     width: 100%;
@@ -942,7 +942,7 @@ form#store_locator_search_form input[type="text"], select {
 }
 
 .store-locator-item:hover .wpsl-choose-location-btn {
-	background-color: #FF5A1A;
+    background-color: #FF5A1A;
 }
 
 .store-list-address {
@@ -1163,45 +1163,45 @@ img.load-img {
     .map-listings {
     width: 100% !important;
 
-	}
+    }
 
-	div#store_locatore_search_map.left{
-		top: 220px;
-		width: 100% !important;
-	}
+    div#store_locatore_search_map.left{
+        top: 220px;
+        width: 100% !important;
+    }
 
 
 
-	.wpmsl-searchbox{
-		width:80%;
-	}
+    .wpmsl-searchbox{
+        width:80%;
+    }
 
-	.wpmsl-searchbox span {
-		display: none;
-		border-bottom: solid 1px;
-		width: 100%;
-	}
+    .wpmsl-searchbox span {
+        display: none;
+        border-bottom: solid 1px;
+        width: 100%;
+    }
 
-	.wpmsl-searchbox select {	
-		width: 100%;
-		font-size: 14px !important;
-		padding: 5px !important;
-		border: solid 1px !important;
-		border-radius: 3px !important;
-		height: auto !important;
-		margin: 6px 0px !important;
-	}
+    .wpmsl-searchbox select {   
+        width: 100%;
+        font-size: 14px !important;
+        padding: 5px !important;
+        border: solid 1px !important;
+        border-radius: 3px !important;
+        height: auto !important;
+        margin: 6px 0px !important;
+    }
 
-	.wpmsl-searchbox input {
-		    width: 100% !important;
-		margin: 0px !important;
-		font-size: 14px !important;
-		padding: 5px !important;
-		border: solid 1px !important;
-		border-radius: 3px !important;
-		margin: 4px 0px !important;
-		height: 38px !important;
-	}
+    .wpmsl-searchbox input {
+            width: 100% !important;
+        margin: 0px !important;
+        font-size: 14px !important;
+        padding: 5px !important;
+        border: solid 1px !important;
+        border-radius: 3px !important;
+        margin: 4px 0px !important;
+        height: 38px !important;
+    }
 
     .map-listings.left.resp-height, .full_width_div.resp-height {
         height: auto!important;
@@ -1218,8 +1218,8 @@ img.load-img {
     padding: 2px;
     border-radius: 5px;
     font-size: 11px;
-	float:right;
-	    display: block;
+    float:right;
+        display: block;
     clear: both;
 }
 
@@ -1398,12 +1398,12 @@ ul.hide_fields li {
     font-size: 15px;
     font-weight: bold;
     width: 150px;
-	float:right;
-	text-align:right;
+    float:right;
+    text-align:right;
 }
 .store-list-address .wpsl-address,
 .store-list-address .wpsl-city {
-	width: 100%;
+    width: 100%;
     float: left;
     text-align: right;
 }
@@ -1413,7 +1413,7 @@ ul.hide_fields li {
     width: 100%;
 }
 .section-hero-header-directions-icon{
-	float:left!important;
+    float:left!important;
 }
 p.time {
     border-bottom: solid 1px #CCC;
@@ -1435,11 +1435,11 @@ div.store-direction {
     padding: 4px;
     border: solid 1px #CCC;
     border-radius: 6px;
-	float:left;
-	margin-bottom:-23px;
+    float:left;
+    margin-bottom:-23px;
 }
 .section-hero-header-directions-icon{
-	margin-right: 3px!important;
+    margin-right: 3px!important;
 }
 /* listing below map styles */
 div#store_locatore_search_map.below_map {
@@ -1505,3 +1505,11 @@ div#store_locatore_search_map.below_map {
     }
 }
 /* end listing below map style */
+.store-list-address .wpsl-phone{
+    clear: both;
+}
+.store-list-details .store-direction{
+    clear: both;
+    float: none;
+    margin-bottom: 0px;
+}

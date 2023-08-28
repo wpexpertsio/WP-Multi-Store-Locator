@@ -1,16 +1,21 @@
 <?php get_header(); ?>
-
-
         <?php
         $store_meta = get_post_meta(get_the_ID());
         $single_options = get_option('store_locator_single');
         $map_options = get_option('store_locator_map');
         $map_options['marker1'] = STORE_LOCATOR_PLUGIN_URL . "assets/img/" . $map_options['marker1'];
         $map_options['marker2'] = STORE_LOCATOR_PLUGIN_URL . "assets/img/" . $map_options['marker2'];
-        $working_hours = "<table class='store_locator_grid_results store_locator_working_hours'><tr><td colspan='3'>" . __("Working Hours", "store_locator") . "</td></tr>";
-        $store_metaDays = $store_meta['store_locator_days'][0];
+        $working_hours = "<table class='store_locator_grid_results store_locator_working_hours'><tr><td colspan='3'>" . __("Working Hours", "store_locator") . "</td></tr>";        
+        $store_metaDays = ( isset( $store_meta['store_locator_days'][0] ) ? $store_meta['store_locator_days'][0] : '' );
         $store_metaDays = unserialize($store_metaDays);
-        $days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+        $days = array(
+            __("Monday","store_locator"),
+            __("Tuesday","store_locator"),
+            __("Wednesday","store_locator"),
+            __("Thursday","store_locator"),
+            __("Friday","store_locator"),
+            __("Saturday","store_locator"),
+            __("Sunday","store_locator"));
         foreach ($days as $day) {
             $working_hours .= "<tr class='".(($store_metaDays[$day]['status'] == "1") ?"store-locator-open":"store-locator-closed") ."'><td>" . $day . "</td><td>" . (($store_metaDays[$day]['status'] == "1") ? __("Open", "store_locator") : __("Closed", "store_locator")) . "</td><td><span class='store_locator_start'>" . $store_metaDays[$day]['start'] . "</span><span class='store_locator_end'>" . $store_metaDays[$day]['end'] . "</span></td></tr>";
         }
@@ -48,13 +53,13 @@
                                     <?php
                                     switch ($item) {
                                         case 'name':
-                                            echo "<h1>" . $store_meta['store_locator_name'][0] . "</h1>";
+                                            echo "<h1>" . ( isset( $store_meta['store_locator_name'][0] ) ? $store_meta['store_locator_name'][0] : '' ) . "</h1>";
                                             break;
                                         case 'website':
-                                            echo "<span>". __("Website: ", "store_locator") ."</span>". $store_meta['store_locator_website'][0];
+                                            echo "<span>". __("Website: ", "store_locator") ."</span>". ( isset( $store_meta['store_locator_website'][0] ) ? $store_meta['store_locator_website'][0] : '' );
                                             break;
                                         case 'description':
-                                            echo nl2br($store_meta['store_locator_description'][0]);
+                                            echo nl2br( ( isset( $store_meta['store_locator_description'][0] ) ? $store_meta['store_locator_description'][0] : '' ) );
                                             break;
                                         case 'phone':
                                             echo "<span>". __("Phone: ", "store_locator")."</span>" . $store_meta['store_locator_phone'][0];
@@ -67,9 +72,16 @@
                                             break;
                                         case 'working_hours':
                                             $working_hours = "<table class='store_locator_grid_results store_locator_working_hours'>";
-                                            $store_metaDays = $store_meta['store_locator_days'][0];
+                                            $store_metaDays = ( isset( $store_meta['store_locator_days'][0] ) ? $store_meta['store_locator_days'][0] : '' );
                                             $store_metaDays = unserialize($store_metaDays);
-                                            $days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+                                            $days = array(
+                                                __("Monday","store_locator"),
+                                                __("Tuesday","store_locator"),
+                                                __("Wednesday","store_locator"),
+                                                __("Thursday","store_locator"),
+                                                __("Friday","store_locator"),
+                                                __("Saturday","store_locator"),
+                                                __("Sunday","store_locator"));
                                             foreach ($days as $day) {
                                                 $working_hours .= "<tr class='".(($store_metaDays[$day]['status'] == "1") ?"store-locator-open":"store-locator-closed") ."'><td>" . $day . "</td><td>" . (($store_metaDays[$day]['status'] == "1") ? __("Open", "store_locator") : __("Closed", "store_locator")) . "</td><td><span class='store_locator_start'>" . $store_metaDays[$day]['start'] . "</span><span class='store_locator_end'>" . $store_metaDays[$day]['end'] . "</span></td></tr>";
                                             }
@@ -77,7 +89,7 @@
                                             echo $working_hours;
                                             break;
                                         case 'managers':
-                                            $sales = unserialize($store_meta['store_locator_sales'][0]);
+                                            $sales = unserialize( ( isset( $store_meta['store_locator_sales'][0] ) ? $store_meta['store_locator_sales'][0] : '' ) );
                                             if ($sales) {
                                                 echo "<span class='store_locator_managers_titles' >". __("Managers: ", "store_locator")."</span><div class='store_locator_managers_wrapper'>";
                                                 foreach ($sales as $manager) {
@@ -125,7 +137,7 @@
         if ( store_locator_map_options.style ) {
             store_locator_map.set( 'styles', JSON.parse(store_locator_map_options.style) );
         }
-
+    
         var bounds = new google.maps.LatLngBounds();
         var infowindow = new google.maps.InfoWindow();
 

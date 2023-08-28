@@ -1,0 +1,310 @@
+# English translations for PACKAGE package.
+# Copyright (C) 2012 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-multi-store-locator-proe 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-06 13:46-0400\n"
+"PO-Revision-Date: 2017-09-19 17:46+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.3\n"
+"Language: en_US\n"
+
+#: mypluginindex.php:87 (it is just a line of note, to remind where our code
+#: appears)
+msgid "Store List"
+msgstr "Store List"
+
+msgid "Visit Website"
+msgstr "Visit Website"
+
+msgid "Search Options"
+msgstr "Search Options"
+
+msgid "Get Direction"
+msgstr "Get Direction"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Searching ..."
+msgstr "Searching ..."
+
+msgid "Select Category "
+msgstr "Select Category "
+
+msgid "No matches found"
+msgstr "No matches found"
+
+msgid "Get my location"
+msgstr "Get my location"
+
+msgid "Select Tags"
+msgstr "Select Tags"
+
+msgid "Show More"
+msgstr "Show More"
+
+msgid "All Sales Managers"
+msgstr "All Sales Managers"
+
+msgid "Stores Locator"
+msgstr "Stores Locator"
+
+msgid "Stores List"
+msgstr "Stores List"
+
+msgid "Store Tags"
+msgstr "Store Tags"
+
+msgid "Settings"
+msgstr "Settings"
+
+msgid "Import/Export"
+msgstr "Import/Export"
+
+msgid "Statistics"
+msgstr "Statistics"
+
+msgid "Google Maps Api"
+msgstr "Google Maps Api"
+
+msgid "Map Settings"
+msgstr "Map Settings"
+
+msgid "Show map on frontend?"
+msgstr "Show map on frontend?"
+
+msgid "Map Width"
+msgstr "Map Width"
+
+msgid "Map Height"
+msgstr "Map Height"
+
+msgid "Map Type"
+msgstr "Map Type"
+
+msgid "Search Unit"
+msgstr "Search Unit"
+
+msgid "Enable Search with categories?"
+msgstr "Enable Search with categories?"
+
+msgid "Enable Search with Tags?"
+msgstr "Enable Search with Tags?"
+
+msgid "Show street view control?"
+msgstr "Show street view control?"
+
+msgid "Show map type control?"
+msgstr "Show map type control?"
+
+msgid "Zoom by scroll on map?"
+msgstr "Zoom by scroll on map?"
+
+msgid "Default Map Search"
+msgstr "Default Map Search"
+
+msgid "Hide Fields for Search"
+msgstr "Hide Fields for Search"
+
+msgid "Get My Location"
+msgstr "Get My Location"
+
+msgid "Location Field"
+msgstr "Location Field"
+
+msgid "Radius Field"
+msgstr "Radius Field"
+
+msgid "Category Field"
+msgstr "Category Field"
+
+msgid "Tags Field"
+msgstr "Tags Field"
+
+msgid "Map Search Open as Default"
+msgstr "Map Search Open as Default"
+
+msgid "Switch To RTL"
+msgstr "Switch To RTL"
+
+msgid "Map Styles"
+msgstr "Map Styles"
+
+msgid "Standard Map"
+msgstr "Standard Map"
+
+msgid "Silver Map"
+msgstr "Silver Map"
+
+msgid "Retro Map"
+msgstr "Retro Map"
+
+msgid "Dark Map"
+msgstr "Dark Map"
+
+msgid "Night Map"
+msgstr "Night Map"
+
+msgid "Aubergine Map"
+msgstr "Aubergine Map"
+
+msgid "Basic Map"
+msgstr "Basic Map"
+
+msgid "Map Result Show on"
+msgstr "Map Result Show on"
+
+msgid "Left"
+msgstr "Left"
+
+msgid "Right"
+msgstr "Right"
+
+msgid "User Marker"
+msgstr "User Marker"
+
+msgid "or add custom marker url"
+msgstr "or add custom marker url"
+
+msgid "Store Marker"
+msgstr "Store Marker"
+
+msgid "Info Window Content"
+msgstr "Info Window Content"
+
+msgid "Customised Map Style"
+msgstr "Customised Map Style"
+
+msgid "Save Changes"
+msgstr "Save Changes"
+
+msgid "Get Location Text Button"
+msgstr "Get Location Text Button"
+
+msgid "Enter Location Text"
+msgstr "Enter Location Text"
+
+msgid "Select Category"
+msgstr "Select Category"
+
+msgid "Markieren Sie Tags"
+msgstr "Markieren Sie Tags"
+
+msgid "Show listing on frontend?"
+msgstr "Show listing on frontend?"
+
+msgid "Number of stores/page"
+msgstr "Number of stores/page"
+
+msgid "Autoload results on scroll?"
+msgstr "Autoload results on scroll?"
+
+msgid "Listing Settings"
+msgstr "Listing Settings"
+
+msgid "Listing Type"
+msgstr "Listing Type"
+
+msgid "Single Page Settings"
+msgstr "Single Page Settings"
+
+msgid "Link store to a single page?"
+msgstr "Link store to a single page?"
+
+msgid "Enter Unique Slug Name"
+msgstr "Enter Unique Slug Name"
+
+msgid "Show feature image of the store?"
+msgstr "Show feature image of the store?"
+
+msgid "Show map on page?"
+msgstr "Show map on page??"
+
+msgid "Displayed Columns"
+msgstr "Displayed Columns"
+
+msgid "Add New Store"
+msgstr "Add New Store"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Address"
+msgstr "Address"
+
+msgid "Placeholder Text"
+msgstr "Placeholder Text"
+
+msgid "Search Store"
+msgstr "Search Store"
+
+msgid "Add New Category"
+msgstr "Add New Category"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Add New Tag"
+msgstr "Add New Tag"
+
+msgid "Stores/Sales Managers"
+msgstr "Stores/Sales Managers"
+
+msgid "Upload Stores"
+msgstr "Upload Stores"
+
+msgid "Export Stores"
+msgstr "Export Stores"
+
+msgid "Import Sales Managers"
+msgstr "Import Sales Managers"
+
+msgid "Export Sales Managers"
+msgstr "Export Sales Managers"
+
+msgid "Click here To Import New/Pending Stores"
+msgstr "Click here To Import New/Pending Stores"
+
+msgid "have been imported"
+msgstr "have been imported"
+
+msgid "Store Locator Shortcode"
+msgstr "Store Locator Shortcode"
+
+msgid "Store Info"
+msgstr "Store Info"
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "Fax"
+msgstr "Fax"
+
+msgid "Website"
+msgstr "Website"
+
+msgid "Working Hours"
+msgstr "Working Hours"
+
+msgid "Country"
+msgstr "Country"
+
+msgid "State"
+msgstr "State"
+
+msgid "City"
+msgstr "City"
+
+msgid "Postal Code"
+msgstr "Postal Code"

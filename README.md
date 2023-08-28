@@ -54,6 +54,50 @@ Generate a directory based on the store locations.
 
 ## Changelog
 
+**2.4**
+
+- Added Escaping to the code according to wordpress standards.
+- some Bug fixes.
+
+**2.3**
+
+- Fixed Notices and warnings in single store locator settings and frontend.
+- Fixed Distance in KM getting selected by default when we make any changes in map settings.
+- Fixed Stores being displayed even after they are deleted.
+- Fixed Visit Website text with empty link being displayed in infowindow, even when no link for visit website is given for that store.
+- Fixed Font Awesome icons for Address and Phone being displayed in infowindow, even when no Address and Phone is given for that store.
+
+**2.2**
+
+- Fixed Shortcode not saving in WordPress default editor.
+- Fixed Typo in SSL error message.
+- Fixed Map type not working.
+- Fixed Some part of map being displayed behind stores grid.
+- Fixed Distance always being displayed in miles.
+
+**2.0.1**
+
+- Added Option to show/hide search window
+- Fixed Add New Sales Manager not working
+
+**2.0**
+
+- Improvement Store Loading Issue.
+- Added Multiple Maps by Categories.
+- Added Info Window Customization.
+- Added Google Maps Direction.
+- Added Snazzy Maps Styles Support.
+- Added Custom Markers.
+- Added Category Based Markers.
+
+**1.8.1**
+
+- Added compatibility for WordPress 5.0.3
+
+**1.8**
+
+- add support for wpml
+
 **1.7**
 
 - Added new style for displaying Store Listings.

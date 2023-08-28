@@ -1,5 +1,17 @@
 //Bind events to the page 
+function copytoclipboard() {
+        //var me =jQuery(this);
+        var shortcode = jQuery('.map_shortcode_callback').find('p input');
+        shortcode[0].select();
+        document.execCommand("Copy");
+       // console.log(shortcode);
+    }
+//Bind events to the page 
 jQuery(document).ready(function (jQuery) {
+	
+	if(stores_json_encoded  != null){
+		jQuery('#tolalcount').text(stores_json_encoded.length);
+	}
     jQuery('#store_locator_country').change(function () {
         if (jQuery('#store_locator_country').val() == 'United States') {
             jQuery('#store_locator_state').parents('tr').show();
@@ -9,7 +21,30 @@ jQuery(document).ready(function (jQuery) {
             jQuery('#store_locator_state').val('');
         }
     });
-    
+    jQuery('#store_locator_map_layout').change(function () {
+        var me =jQuery(this);
+        if(me.val()=='regular'){
+            jQuery(document).find('#wpbody .postbox').addClass('regularMapadmin');
+        }
+        else{
+             jQuery(document).find('#wpbody .postbox').removeClass('regularMapadmin');
+        }
+         if(me.val()=='fullscreen'){
+            jQuery(document).find('#wpbody .postbox').addClass('fullscreenMapadmin');
+        }
+        else{
+             jQuery(document).find('#wpbody .postbox').removeClass('fullscreenMapadmin');
+        }
+    }); 
+    jQuery('.settings_switcher_wpmsl').on('click',function () {
+        var me =jQuery(this);
+        if(me.attr('checked')=='checked'){
+            me.closest('.global_settings_switcher').next('div').fadeOut();
+        }
+        else{
+             me.closest('.global_settings_switcher').next('div').fadeIn();
+        }
+    });
     // bind onchange event on selecting open/close store days 
     jQuery('#store_locator_hours input[type="radio"]').change(function () {
         if (jQuery(this).val() == '1') {
@@ -50,22 +85,57 @@ jQuery(document).ready(function (jQuery) {
     });
 	
 	
-	// initialize input widgets first
-        jQuery('.start_time, .end_time').timepicker({
-            'showDuration': true,
-            'timeFormat': 'g:i a'
-        });
+	 
+	//import store via ajax
+	jQuery( ".import_js_stores" ).click(function(e) {
 		
-		/*if(wpmsl_ajax_object_backend.screen ==  'store_locator'){
-			store_locator_initializeMapBackend();
-		}*/
+		jQuery('.irc_mi_wp_str').fadeIn();
+  if ( jQuery('.import_js_stores').attr('disabled') != "disabled" ) {
+	  jQuery('.import_js_stores').attr("disabled","disabled");
+		if(stores_json_encoded.length > 0){
+				var i = 0;  
+				var del = 0;  
+				var totalTime = 1000;
+				setInterval(function(){
+							var ajaxTime= new Date().getTime();
+							
+							if(stores_json_encoded[i] != null){
+							jQuery.ajax({
+								type: "POST",
+								url: ajax_url,
+								data: 'action=import_js_stores_action&import_js_stores_post=' + JSON.stringify(stores_json_encoded[i]),
+							}).always(function(html) {
+									var totalTime = new Date().getTime()-ajaxTime;
+									var htmls = jQuery.parseJSON( html );
+									jQuery('.store_id_'+stores_json_encoded[del].Code).css('background-color','#dff0d8');
+									setTimeout(function(){ 		
+										// jQuery('.store_id_'+stores_json_encoded[del].Code).css('text-decoration','line-through');
+										jQuery('.store_id_'+stores_json_encoded[del].Code +' + br').remove();
+										jQuery('.store_id_'+stores_json_encoded[del].Code).fadeOut('slow');
+										jQuery('#current-count').text(del);
+										del++;
+									}, 500);
+							  });
+							 i++;
+							} else {
+								jQuery('.irc_mi_wp_str').fadeOut();
+								jQuery('.import_js_stores').removeAttr("disabled","disabled");
+								 totalTime++;
+							}
+				}, totalTime+500);
+						
+			// }
+}}
 		
-         
-
+	});
+	
+	
+	
+	
 	
 });
 
-    function  store_locator_initializeMapBackend() {
+    function  initializeMapBackend() {
         jQuery('#map_loader').hide();
         // Handle google maps
         var oldMarker;
@@ -113,7 +183,6 @@ jQuery(document).ready(function (jQuery) {
             }
         }, 1000);
         // move marker when click on map
-		
         google.maps.event.addListener(map, "click", function (event) {
             marker = new google.maps.Marker({
                 position: event.latLng,
@@ -140,7 +209,6 @@ jQuery(document).ready(function (jQuery) {
                 addressString     = (jQuery('#store_locator_state').val()) ?(addressString+", "+ jQuery('#store_locator_state').val()):addressString;
                 addressString     = (jQuery('#store_locator_country').val()) ?(addressString+" "+ jQuery('#store_locator_country').val()):addressString;
                 addressString     = (jQuery('#store_locator_zipcode').val()) ?(addressString+" "+ jQuery('#store_locator_zipcode').val()):addressString;
-                console.log(addressString);
                 var address = (addressString) ? addressString : "United State";
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({'address': address}, function (results, status) {
@@ -195,6 +263,42 @@ jQuery(document).ready(function (jQuery) {
         //Open the uploader dialog
         custom_uploader.open();
     });
- 
 });
 
+jQuery(document).ready(function($){
+    jQuery(document).on('click','.wpmsl_custom_marker_upload',function(e) {
+             e.preventDefault();
+         var placeInstance = jQuery(this);
+        var image = wp.media({ 
+            title: 'Upload Image',
+            // mutiple: true if you want to upload multiple files at once
+            multiple: false
+        }).open()
+        .on('select', function(e){
+            // jQuery("#variation_remove_id_"+id[2]).addClass("remove_variation_img");
+            // This will return the selected image from the Media Uploader, the result is an object
+            var uploaded_image = image.state().get('selection').first();
+            // We convert uploaded_image to a JSON object to make accessing it easier
+            // Output to the console uploaded_image
+            // var image_url = uploaded_image.toJSON().url;
+            //Let's assign the url value to the input field
+            placeInstance.find('img').attr("src",uploaded_image.attributes.url);
+            placeInstance.find('input[type="hidden"]').attr("value",uploaded_image.attributes.url);
+            placeInstance.find('p').html('Remove');
+            placeInstance.addClass('wpmsl_custom_marker');
+            placeInstance.removeClass('wpmsl_custom_marker_upload');
+           // jQuery(this).find('img').attr("src",uploaded_image.attributes.url);
+         
+        });
+    });
+    jQuery(document).on('click','.wpmsl_custom_marker',function(e) {
+        e.preventDefault();
+         var placeInstance = jQuery(this);
+         
+         placeInstance.find('img').attr("src",wpmsl_url+"assets/img/upload.png");
+         placeInstance.find('input[type="hidden"]').attr("value","");
+         placeInstance.find('p').html('Upload');
+         placeInstance.addClass('wpmsl_custom_marker_upload');
+         placeInstance.removeClass('wpmsl_custom_marker');
+    });
+});
