@@ -267,9 +267,9 @@ if(!class_exists('WPMSL_Multi_Maps_Frontend')){
                     }
                     if(!empty($tag_ids)){
                     $tags=$store['tags'];
-                    if(empty(array_intersect($tags,$tag_ids))){
-                        continue; 
-                    }
+					if (empty(array_intersect((array) $tags, $tag_ids))) {
+						continue;
+					}
                     }
                     $meta = $store['post_meta'];
                     $distance=$this->distance($center_lat,$center_lng,$meta['store_locator_lat'],$meta['store_locator_lng'],$unit );
@@ -277,7 +277,7 @@ if(!class_exists('WPMSL_Multi_Maps_Frontend')){
                         continue;
                     }
                     $infowindow_content = $this->info_window_content($map_id,$store_id,$map_options['infowindow']);
-                    $infowindow_source = $options['info_window_source'];
+                    $infowindow_source = isset($options['info_window_source']) ? $options['info_window_source'] : '';
                     $infowindow = '<div class="store-infowindow">';
                     $infowindow .= apply_filters('wpmsl_infowindow_content',$infowindow_content,$store);
                     $infowindow .= '</div>';
@@ -296,7 +296,7 @@ if(!class_exists('WPMSL_Multi_Maps_Frontend')){
         <?php
         $width = '100%';
         if ($map_options['enable']): $map_options['enable']; ?>
-            <div id="store_locatore_search_map" style="height: <?php echo $map_options['height'] . $map_options['heightunit']; ?>;width: <?php echo $width?>;position:absolute" class="<?php echo $map_options['listing_position']?>">
+            <div id="store_locatore_search_map" style="height: <?php echo $map_options['height'] . $map_options['heightunit']; ?>;width: <?php echo $width?>;position:absolute" class="<?php echo $map_options['listing_position'] ?? 'listing_position';?>">
             </div>
             <script>
                 setTimeout(function(){
@@ -329,7 +329,7 @@ if(!class_exists('WPMSL_Multi_Maps_Frontend')){
 			$meta=$store['post_meta'];
             $accordion = '';
             $dir_type='gmap';
-            if($map_options['show_accordion'])
+            if(isset($map_options['show_accordion']))
                 $accordion = 'accordion-show';
 			$list_item='';
 			$list_item.='<div class="store-locator-item '.$accordion.'" data-store-id="'.$store['ID'].'" data-marker="'. ($counter) .'" id="list-item-'. ($counter) .'" >';
@@ -343,7 +343,7 @@ if(!class_exists('WPMSL_Multi_Maps_Frontend')){
             $address = $meta['store_locator_address'];
             $list_item.='<div class="store-list-details">';
             $list_item.='<div class="store-list-address">';
-			if( $single_options['page'] )
+			if( isset($single_options['page'] ))
 				$store_title = '<a href="'.esc_url($store['guid']).'" target="_blank">' . $store['post_title'] . '</a>';
 			else
 				$store_title =  $store['post_title'];

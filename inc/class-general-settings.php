@@ -255,9 +255,9 @@ class WP_Multi_Store_Locator_Settings {
                                 <td><ul class="hide_fields">
                                     <li><input <?php echo (isset($map_options['search_field_get_my_location']))?'checked':''; ?> value="hide-field" type="checkbox" id="search_field_get_my_location" name="store_locator_map[search_field_get_my_location]" ><?php esc_html_e('Get My Location','store_locator');?></li>
                                     <li>
-            <input <?php echo (isset($map_options['search_field_location']))?'checked':''; ?> value="hide-field" type="checkbox" id="search_field_get_my_location" name="store_locator_map[search_field_location]" ><?php esc_html_e('Location Field','store_locator');?>
+									<input <?php echo (isset($map_options['search_field_location']))?'checked':''; ?> value="hide-field" type="checkbox" id="search_field_get_my_location" name="store_locator_map[search_field_location]" ><?php esc_html_e('Location Field','store_locator');?>
                                     </li>
-                                    <li><input <?php echo (isset($map_options['search_field_radius']))?'checked':''; ?> value="hide-field" type="checkbox" id="search_field_get_my_location" name="store_locator_map[search_field_radius]" ><?php esc_html_e('Radius Field','wpmsl');?></li>
+                                    <li><input <?php echo (isset($map_options['search_field_radius']))?'checked':''; ?> value="hide-field" type="checkbox" id="search_field_get_my_location" name="store_locator_map[search_field_radius]" ><?php esc_html_e('Radius Field','store_locator');?></li>
                                     <li><input <?php echo (isset($map_options['category']))?'checked':''; ?> value="hide-field" type="checkbox" id="search_field_get_my_location" name="store_locator_map[category]" ><?php esc_html_e('Category Field','store_locator');?></li>
                                     <li><input <?php echo (isset($map_options['tag']))?'checked':''; ?> value="hide-field" type="checkbox" id="search_field_get_my_location" name="store_locator_map[tag]" ><?php esc_html_e('Tags Field','store_locator');?></li>
                                 </ul></td>

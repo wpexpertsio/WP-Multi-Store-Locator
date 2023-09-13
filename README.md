@@ -54,6 +54,9 @@ Generate a directory based on the store locations.
 
 ## Changelog
 
+**2.4.1**
+- Compatible with latest WPML plugin v4.6+
+
 **2.4**
 
 - Added Escaping to the code according to wordpress standards.

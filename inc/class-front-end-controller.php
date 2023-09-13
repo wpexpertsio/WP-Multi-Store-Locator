@@ -28,7 +28,7 @@ if(!class_exists('WPMSL_Maps_Frontend_Controller')){
 	        } else {
 	             $image = '';
 	        }
-	        if( $single_options['page'] )
+	        if( isset($single_options['page'] ))
 	            $store_title = '<a href="'.get_permalink($store_id).'" target="_blank">' . get_the_title($store_id) . '</a>';
 	        else
 	            $store_title =  get_the_title($store_id);
@@ -68,6 +68,11 @@ if(!class_exists('WPMSL_Maps_Frontend_Controller')){
 			return $content;
 		}
 		public function search_window($map_id, $map_options, $grid_options, $placeholder_settings){
+			
+			$placeholder_setting = get_post_meta($map_id,'placeholder_settings',true);
+			if (isset($placeholder_setting['global']) && $placeholder_setting['global'] == 'no') {
+				$placeholder_settings = get_post_meta($map_id,'placeholder_settings',true);	
+			}
 			$dir_type='gmap';
 			?>
 			<div class="col-left leftsidebar slide-left <?php echo isset($grid_options['listing_position']) ? $grid_options['listing_position'].'-skip ' : 'below_map-skip ';  echo isset($grid_options['search_window_position']) ? $grid_options['search_window_position'] : 'wpml_left_map'; ?>">
@@ -90,15 +95,18 @@ if(!class_exists('WPMSL_Maps_Frontend_Controller')){
 					});
 				</script>
 			    <div class="search-options-btn"><a class="wpml-toggle-box"><span class="dashicons dashicons-menu"></span></a>
-			    	<?php echo (!empty($placeholder_settings['search_options_btn'])) ? $placeholder_settings['search_options_btn'] : _e('Search Options','store_locator'); ?>
+			    	<?php
+						$search_options_btn = (!empty($placeholder_settings['search_options_btn'])) ? $placeholder_settings['search_options_btn'] : __('Search Options', 'store_locator');
+						echo esc_html__($search_options_btn, 'store_locator');
+					?>
 			    </div>
 			    <div class="store-search-fields <?php echo $map_window_open?>">
 			        <form id="store_locator_search_form" >
 			            <div class="store_locator_field <?php echo isset($map_options['search_field_get_my_location']) ? $map_options['search_field_get_my_location'] : ''; ?>">
-			               <input id="store_locatore_get_btn" class=""  type="button" value="<?php echo (!empty($placeholder_settings['get_location_btn_txt'])) ? $placeholder_settings['get_location_btn_txt'] : _e('Get My Location','store_locator'); ?>" />
+			               <input id="store_locatore_get_btn" class=""  type="button" value="<?php echo (!empty($placeholder_settings['get_location_btn_txt'])) ? $placeholder_settings['get_location_btn_txt'] : esc_html_e('Get My Location','store_locator'); ?>" />
 			            </div>
 			            <div class="store_locator_field <?php echo isset($map_options['search_field_location']) ? $map_options['search_field_location'] : ''; ?>">
-			        <input id="store_locatore_search_input"  class="wpsl_search_input " name="store_locatore_search_input" type="text" placeholder="<?php echo (isset($placeholder_settings['enter_location_txt']) && !empty($placeholder_settings['enter_location_txt']) ? $placeholder_settings['enter_location_txt'] : _e('Location / Zip Code','store_locator')); ?>">
+			        <input id="store_locatore_search_input"  class="wpsl_search_input " name="store_locatore_search_input" type="text" placeholder="<?php echo (isset($placeholder_settings['enter_location_txt']) && !empty($placeholder_settings['enter_location_txt']) ? $placeholder_settings['enter_location_txt'] : esc_html_e('Location / Zip Code','store_locator')); ?>">
 			            </div>
 			            <?php  $radius = ($map_options['radius'])?explode(",",trim($map_options['radius'])):false;
 			             if($radius): ?>
@@ -115,29 +123,32 @@ if(!class_exists('WPMSL_Maps_Frontend_Controller')){
 			            </select>
 			        </div>
 			        <?php endif; 
-			        $terms = get_terms( 'store_locator_category', array('hide_empty' => 0));
-			        ?>
+			        $terms = get_terms( 'store_locator_category', array('hide_empty' => 0)); ?>
 			        <div class="store_locator_field <?php echo isset($map_options['category']) ? $map_options['category'] : ''; ?>">
 			            <select name="store_locator_category" id="wpsl_store_locator_category" class="wpsl_locator_category ">
-			                <option value=""> <?php echo (!isset($placeholder_settings['select_category_txt']) && $placeholder_settings['select_category_txt']== '') ? _e("Select Category","store_locator") :$placeholder_settings['select_category_txt']; ?> </option>
-			                <?php foreach ( $terms as $term ) : ?>
-			                    <option value="<?php echo $term->term_id; ?>"> <?php echo $term->name; ?> </option>
-			                <?php endforeach; ?>
+			                <option value=""><?php echo !empty($placeholder_settings['select_category_txt']) ? esc_html($placeholder_settings['select_category_txt']) : esc_html__("Select Category","store_locator"); ?> </option>
+							<?php foreach ( $terms as $term ) : 
+								if(has_term( $term->term_id,'store_locator_category', absint($map_id) )){
+								?>
+			                    <option value="<?php echo esc_attr($term->term_id); ?>"> <?php echo esc_html($term->name); ?> </option>
+			                <?php } endforeach; ?>
 			            </select>
 			        </div>
 			        <?php
-			        $terms = get_terms( 'store_locator_tag', array('hide_empty' => 0));
-			         ?>
-			        <div class="store_locator_field <?php echo isset($map_options['tag']) ? $map_options['tag'] : ''; ?>">
-			            <select placeholder="<?php echo (!isset($placeholder_settings['select_tags_txt']) && $placeholder_settings['select_tags_txt'] == '' )? _e('Select Tags','store_locator'): $placeholder_settings['select_tags_txt']; ?>" name="store_locator_tag[]" class="wpsl_locator_category " id="store_locator_tag" multiple="multiple">
-			                <?php foreach ( $terms as $term ) : ?>
-			                    <option value="<?php echo $term->term_id; ?>"> <?php echo $term->name; ?></option>
-			                <?php endforeach; ?>
-			            </select>
-			        </div>
+			        $terms = get_terms( 'store_locator_tag', array('hide_empty' => 0)); ?>
+			        <div class="store_locator_field">
+						<select name="store_locator_tag[]" class="wpsl_locator_category" id="store_locator_tag" multiple="multiple">
+							<option value="" disabled selected>
+								<?php echo !empty($placeholder_settings['select_tags_txt']) ? esc_html($placeholder_settings['select_tags_txt']) : esc_html__('Select Tags', 'store_locator'); ?>
+							</option>
+							<?php foreach ($terms as $term) : ?>
+								<option value="<?php echo esc_attr($term->term_id); ?>"> <?php echo esc_html($term->name); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
 			        <div class="store_locator_field">
 			        	<div class="map-btns">               
-				        <span><input id="store_locatore_search_btn" type="submit" value="<?php echo (!empty($placeholder_settings['search_btn_txt'])) ? $placeholder_settings['search_btn_txt'] : _e("Search", 'store_locator'); ?>" /></span>
+				        <span><input id="store_locatore_search_btn" type="submit" value="<?php echo (!empty($placeholder_settings['search_btn_txt'])) ? $placeholder_settings['search_btn_txt'] : esc_html__("Search", 'store_locator'); ?>" /></span>
 					    </div>
 			    	</div>
 		        </form>
