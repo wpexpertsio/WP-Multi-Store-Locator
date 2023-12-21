@@ -3,7 +3,7 @@
   Plugin Name: WP Multi Store Locator Free  
   Plugin URI: https://wpexperts.io/products/wp-multi-store-locator/
   Description: This plugin provides a number of options for admin in backend to manage their stores and sales manager for respective franchise. WP Store Locator have awesome user interface and displays results with google map in front end. Its a complete package with lots of features like search store, nearby you stores functionality and much more.
-  Version: 2.4.1
+  Version: 2.4.2
   Author: WpExpertsio
   Author URI: https://wpexperts.io/
   Text Domain: store_locator

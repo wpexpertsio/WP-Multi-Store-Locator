@@ -4,8 +4,8 @@ Contributors: wpexpertsio
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=pay@objects.ws&item_name=DonationForPlugin
 Tags: Store Locator, Search Store, Store Categories, Store Shortcode, Store Sales Manager
 Requires at least: 4.5.0
-Tested up to: 6.3.1
-Stable tag: 2.4.1
+Tested up to: 6.4.2
+Stable tag: 2.4.2
 License: GPLv2 or later
 Requires PHP: 7.4
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -152,6 +152,9 @@ Head over to the [WP Multi Store Locator **GitHub Repository**](https://github.c
 11. Sales Manager.
 
 == Changelog ==
+
+= 2.4.2 =
+* Update Select2 library
 
 = 2.4.1 =
 * Compatible with latest WPML
